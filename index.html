@@ -12,6 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Firebase Compat SDK v10.12.2 (Auth + Firestore) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
   <script>
     tailwind.config = {
@@ -167,6 +171,23 @@
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
+
+    /* Native-App Mobile Polish & Safe Area */
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @media (max-width: 639px) {
+      .gq-card {
+        border-radius: 1.25rem;
+      }
+    }
   </style>
 </head>
 
@@ -176,51 +197,51 @@
   <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-[100]"></canvas>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[95] flex flex-col gap-2 pointer-events-none"></div>
+  <div id="toastContainer" class="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[95] w-[92vw] max-w-md flex flex-col items-center gap-2 pointer-events-none"></div>
 
   <!-- ===================================================================== -->
   <!-- 1. LANDING PAGE VIEW (HOME)                                           -->
   <!-- ===================================================================== -->
   <div id="landingView" class="min-h-screen flex flex-col">
-    <!-- Top Sticky Header -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-obsidian-950/85 border-b border-slate-200 dark:border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Top Sticky Header (Mobile-Optimized, Zero Text Wrapping) -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/85 dark:bg-obsidian-950/90 border-b border-slate-200 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
         <!-- Brand Logo -->
-        <a href="#" onclick="switchMainMode('landing'); return false;" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-amber-500 flex items-center justify-center text-white shadow-lg shadow-brand/30 group-hover:scale-105 transition">
-            <i class="fa-solid fa-dumbbell text-lg"></i>
+        <a href="#" onclick="switchMainMode('landing'); return false;" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-brand to-amber-500 flex items-center justify-center text-white shadow-lg shadow-brand/30 group-hover:scale-105 transition shrink-0">
+            <i class="fa-solid fa-dumbbell text-sm sm:text-lg"></i>
           </div>
-          <div>
-            <span class="font-display font-bold text-xl tracking-wider">GYM<span class="text-brand">QUEST</span></span>
-            <span class="hidden sm:inline-block ml-2 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-brand/15 text-brand border border-brand/30">v2.0 Pro</span>
+          <div class="flex items-center">
+            <span class="font-display font-bold text-base sm:text-xl tracking-wider whitespace-nowrap">GYM<span class="text-brand">QUEST</span></span>
+            <span class="hidden md:inline-block ml-2 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-brand/15 text-brand border border-brand/30 whitespace-nowrap">v2.5 Cloud</span>
           </div>
         </a>
 
         <!-- Anchor Links -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
-          <a href="#features" class="hover:text-brand transition" data-i18n="nav_features">TÍNH NĂNG</a>
-          <a href="#coaches" class="hover:text-brand transition" data-i18n="nav_coaches">AI COACH</a>
-          <a href="#pricing" class="hover:text-brand transition text-brand font-bold flex items-center gap-1.5"><i class="fa-solid fa-crown text-amber-400"></i><span>BẢNG GIÁ GÓI TẬP</span></a>
-          <a href="#howitworks" class="hover:text-brand transition" data-i18n="nav_how">CÁCH HOẠT ĐỘNG</a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300">
+          <a href="#features" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_features">TÍNH NĂNG</a>
+          <a href="#coaches" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_coaches">AI COACH</a>
+          <a href="#pricing" class="hover:text-brand transition text-brand font-bold flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-crown text-amber-400"></i><span>BẢNG GIÁ GÓI TẬP</span></a>
+          <a href="#howitworks" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_how">CÁCH HOẠT ĐỘNG</a>
         </nav>
 
-        <!-- Controls: Language, Theme, CTA -->
-        <div class="flex items-center gap-2.5">
+        <!-- Controls: Language, Theme, CTA (All nowrap & shrink-0) -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <!-- Language Toggle (VI | EN) -->
-          <button onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg text-xs font-bold gq-elevated hover:border-brand transition flex items-center gap-1.5" title="Switch Language / Đổi ngôn ngữ">
+          <button onclick="toggleLanguage()" class="px-2 sm:px-3 py-1.5 rounded-lg text-xs font-bold gq-elevated hover:border-brand transition flex items-center gap-1 whitespace-nowrap shrink-0" title="Switch Language / Đổi ngôn ngữ">
             <i class="fa-solid fa-earth-asia text-brand"></i>
             <span id="langBadgeLanding">VI</span>
           </button>
 
           <!-- Theme Toggle (Dark | Light) -->
-          <button onclick="toggleTheme()" class="w-9 h-9 rounded-lg gq-elevated hover:border-brand transition flex items-center justify-center text-amber-400" title="Toggle Dark/Light Mode">
-            <i id="themeIconLanding" class="fa-solid fa-sun"></i>
+          <button onclick="toggleTheme()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg gq-elevated hover:border-brand transition flex items-center justify-center text-amber-400 shrink-0" title="Toggle Dark/Light Mode">
+            <i id="themeIconLanding" class="fa-solid fa-sun text-xs sm:text-sm"></i>
           </button>
 
-          <!-- Open Login Modal or Direct Demo -->
-          <button onclick="openAuthModal()" class="px-4 py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/25 transition flex items-center gap-2">
+          <!-- Open Login Modal or Enter App -->
+          <button onclick="handleLandingPrimaryCta()" id="landingAuthCtaBtn" class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
             <span data-i18n="btn_get_started">Bắt Đầu Ngay</span>
-            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>
           </button>
         </div>
       </div>
@@ -714,8 +735,8 @@
   <!-- ===================================================================== -->
   <div id="appView" class="hidden min-h-screen flex flex-col lg:flex-row">
 
-    <!-- LEFT SIDEBAR (Desktop) & TOP BAR (Mobile) -->
-    <aside class="lg:w-64 lg:fixed lg:inset-y-0 lg:left-0 z-30 gq-card border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-white/10 flex flex-col justify-between">
+    <!-- LEFT SIDEBAR (Desktop Only — Mobile Uses Native Bottom Navigation Bar) -->
+    <aside class="hidden lg:flex lg:w-64 lg:fixed lg:inset-y-0 lg:left-0 z-30 gq-card border-r border-slate-200 dark:border-white/10 flex-col justify-between overflow-y-auto no-scrollbar">
       <div>
         <!-- App Logo Header -->
         <div class="h-16 px-5 flex items-center justify-between border-b border-slate-200 dark:border-white/10">
@@ -728,20 +749,10 @@
               <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase mt-0.5">TRAIN • LEVEL • WIN</div>
             </div>
           </button>
-
-          <!-- Mobile Quick Controls -->
-          <div class="flex lg:hidden items-center gap-2">
-            <button onclick="toggleLanguage()" class="px-2.5 py-1 rounded-lg text-xs font-bold gq-elevated">
-              <span id="langBadgeMobile">VI</span>
-            </button>
-            <button onclick="toggleTheme()" class="w-8 h-8 rounded-lg gq-elevated flex items-center justify-center text-amber-400">
-              <i class="fa-solid fa-circle-half-stroke"></i>
-            </button>
-          </div>
         </div>
 
-        <!-- Navigation Menu -->
-        <nav class="p-3 flex lg:flex-col gap-1.5 overflow-x-auto">
+        <!-- Navigation Menu (Desktop) -->
+        <nav class="p-3 flex flex-col gap-1.5">
           <button onclick="switchMainMode('landing')" class="nav-tab-btn flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand/10 hover:text-brand transition whitespace-nowrap">
             <i class="fa-solid fa-house w-5 text-center"></i>
             <span data-i18n="menu_home">Trang Chủ</span>
@@ -752,7 +763,7 @@
               <i class="fa-solid fa-table-cells-large w-5 text-center"></i>
               <span data-i18n="menu_dashboard">Bảng Điều Khiển</span>
             </span>
-            <span class="w-2 h-2 rounded-full bg-white hidden lg:inline-block"></span>
+            <span class="w-2 h-2 rounded-full bg-white"></span>
           </button>
 
           <button onclick="toggleAICoachDrawer(true)" class="nav-tab-btn flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand/10 hover:text-brand transition whitespace-nowrap">
@@ -783,7 +794,7 @@
               <i class="fa-solid fa-chart-simple w-5 text-center"></i>
               <span data-i18n="menu_leaderboard">Bảng Xếp Hạng</span>
             </span>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400">#4</span>
+            <span id="sidebarRankBadge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400">#4</span>
           </button>
 
           <button onclick="switchAppTab('profile')" id="nav_profile" class="nav-tab-btn flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand/10 hover:text-brand transition whitespace-nowrap">
@@ -803,30 +814,31 @@
         </nav>
       </div>
 
-      <!-- Bottom Subscription Card + User Mini Card (Desktop) -->
-      <div class="hidden lg:block p-4 border-t border-slate-200 dark:border-white/10 space-y-3">
+      <!-- Bottom Subscription Card + Cloud Auth + User Mini Card (Desktop) -->
+      <div class="p-4 border-t border-slate-200 dark:border-white/10 space-y-2.5">
         <!-- Strategic Touchpoint #2: Sidebar Subscription Status Card -->
-        <div id="sidebarPlanCard" class="p-3.5 rounded-2xl gq-elevated border border-brand/40 relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1.5">
+        <div id="sidebarPlanCard" class="p-3 rounded-2xl gq-elevated border border-brand/40 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1">
             <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">GÓI HIỆN TẠI</span>
             <span id="sidebarPlanBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-brand text-white uppercase">PRO</span>
           </div>
-          <div id="sidebarPlanDesc" class="text-xs font-semibold text-slate-200 leading-snug mb-2.5">
-            Đã mở khóa 32+ bài tập & Video Loop. Nâng VIP để dùng AI Coach!
+          <div id="sidebarPlanDesc" class="text-[11px] font-semibold text-slate-200 leading-snug mb-2">
+            Đã mở khóa 34 bài tập & Video Loop. Nâng VIP để dùng AI Coach!
           </div>
-          <button onclick="openPricingModal()" class="w-full py-2 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-bold text-xs shadow-md shadow-brand/20 transition flex items-center justify-center gap-1.5">
+          <button onclick="openPricingModal()" class="w-full py-1.5 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-bold text-xs shadow-md shadow-brand/20 transition flex items-center justify-center gap-1.5">
             <i class="fa-solid fa-bolt"></i>
             <span>Nâng Cấp / Đổi Gói</span>
           </button>
         </div>
 
-        <button onclick="switchMainMode('landing')" class="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-rose-400 transition">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span data-i18n="menu_logout">Quay về Landing Page</span>
-        </button>
+        <!-- Cloud Sync Status Pill -->
+        <div id="sidebarCloudStatus" class="px-3 py-1.5 rounded-xl gq-elevated text-[11px] font-semibold text-slate-400 flex items-center justify-between gap-2">
+          <span class="truncate flex items-center gap-1.5"><i class="fa-solid fa-cloud text-slate-400"></i><span>Chế độ Offline/Demo</span></span>
+          <button onclick="openAuthModal('login')" class="text-brand font-bold hover:underline shrink-0">Đăng nhập</button>
+        </div>
 
-        <div onclick="switchAppTab('profile')" class="cursor-pointer p-3 rounded-xl gq-elevated flex items-center gap-3 hover:border-brand transition group">
-          <div id="sidebarUserAvatar" class="w-10 h-10 rounded-xl bg-brand/20 border border-brand/40 flex items-center justify-center text-xl">
+        <div onclick="switchAppTab('profile')" class="cursor-pointer p-2.5 rounded-xl gq-elevated flex items-center gap-3 hover:border-brand transition group">
+          <div id="sidebarUserAvatar" class="w-10 h-10 rounded-xl bg-brand/20 border border-brand/40 flex items-center justify-center text-xl shrink-0">
             🦊
           </div>
           <div class="overflow-hidden flex-1">
@@ -840,7 +852,7 @@
         </div>
 
         <!-- Quick Sidebar State Reset / Demo Buttons -->
-        <div class="grid grid-cols-2 gap-1.5 pt-1">
+        <div class="grid grid-cols-2 gap-1.5">
           <button type="button" onclick="resetToLevel1()" class="py-1.5 px-2 rounded-lg gq-elevated hover:border-rose-400 text-[10px] font-bold text-slate-300 hover:text-rose-400 transition flex items-center justify-center gap-1" title="Đặt lại về tài khoản mới Level 1 (0 XP)">
             <i class="fa-solid fa-rotate-left"></i>
             <span>Reset Lv.1</span>
@@ -850,64 +862,89 @@
             <span>Nạp Demo Lv.7</span>
           </button>
         </div>
+
+        <button id="sidebarAuthBtn" onclick="handleSidebarLogoutOrLanding()" class="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-rose-400 transition">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span data-i18n="menu_logout">Quay về Landing Page</span>
+        </button>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-1 lg:ml-64 min-h-screen flex flex-col">
+    <!-- MAIN CONTENT CONTAINER (pb-24 on mobile to clear Bottom Navigation Bar) -->
+    <main class="flex-1 lg:ml-64 min-h-screen flex flex-col pb-24 lg:pb-6">
 
-      <!-- TOP UTILITY BAR (Projector Controls + 1-Click Demo Plan Switcher Pill + Level 1 / Demo Switcher) -->
-    <header class="sticky top-0 z-20 h-16 px-4 sm:px-8 backdrop-blur-md bg-white/80 dark:bg-obsidian-950/85 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto">
-        <span class="text-xs font-bold uppercase tracking-widest text-slate-400 hidden xl:inline" data-i18n="active_coach_label">AI Coach:</span>
-        <button onclick="openCoachModal()" class="px-3 py-1.5 rounded-xl gq-elevated hover:border-brand transition flex items-center gap-2 text-xs font-bold shrink-0">
-          <span id="topBarCoachEmoji">😎</span>
-          <span id="topBarCoachName">Max</span>
-          <i class="fa-solid fa-pen text-[10px] text-slate-400 ml-0.5"></i>
-        </button>
+      <!-- UNIFIED SINGLE-TIER TOP HEADER (1 Compact Bar on Mobile, Full Utility Bar on Desktop) -->
+      <header class="sticky top-0 z-30 h-14 lg:h-16 px-3 sm:px-6 lg:px-8 backdrop-blur-md bg-white/90 dark:bg-obsidian-950/90 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-2">
+        <!-- Left Side: Compact Logo on Mobile | Coach + Demo Switchers on Desktop -->
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <!-- Mobile Compact Brand Logo -->
+          <button onclick="switchMainMode('landing')" class="flex lg:hidden items-center gap-2 text-left shrink-0">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand to-amber-500 flex items-center justify-center text-white shadow-md shadow-brand/25">
+              <i class="fa-solid fa-dumbbell text-sm"></i>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-bold text-base leading-none whitespace-nowrap">GYM<span class="text-brand">QUEST</span></span>
+              <span id="mobileCloudDot" class="w-2 h-2 rounded-full bg-slate-500" title="Trạng thái đồng bộ Cloud"></span>
+            </div>
+          </button>
 
-        <!-- QUICK 1-CLICK DEMO PLAN SWITCHER PILL FOR CLASSROOM PRESENTATION -->
-        <div class="hidden md:flex items-center gap-1 p-1 rounded-xl gq-elevated border border-white/10 shrink-0">
-          <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-2 hidden lg:inline" title="Chuyển nhanh gói để báo cáo trước giảng viên">Gói Demo:</span>
-          <button type="button" onclick="applySubscriptionPlan('basic', true)" id="topPlanBtn_basic" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-400 hover:text-white transition">
-            BASIC
+          <!-- Desktop Active Coach Pill -->
+          <span class="text-xs font-bold uppercase tracking-widest text-slate-400 hidden xl:inline shrink-0" data-i18n="active_coach_label">AI Coach:</span>
+          <button onclick="openCoachModal()" class="hidden lg:flex px-3 py-1.5 rounded-xl gq-elevated hover:border-brand transition items-center gap-2 text-xs font-bold shrink-0">
+            <span id="topBarCoachEmoji">😎</span>
+            <span id="topBarCoachName">Max</span>
+            <i class="fa-solid fa-pen text-[10px] text-slate-400 ml-0.5"></i>
           </button>
-          <button type="button" onclick="applySubscriptionPlan('pro', true)" id="topPlanBtn_pro" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-brand text-white transition">
-            PRO
-          </button>
-          <button type="button" onclick="applySubscriptionPlan('elite', true)" id="topPlanBtn_elite" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-amber-400 hover:text-white transition flex items-center gap-1">
-            <span>👑 VIP</span>
-          </button>
+
+          <!-- QUICK 1-CLICK DEMO PLAN SWITCHER PILL (Desktop) -->
+          <div class="hidden xl:flex items-center gap-1 p-1 rounded-xl gq-elevated border border-white/10 shrink-0">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-2" title="Chuyển nhanh gói để báo cáo trước giảng viên">Gói Demo:</span>
+            <button type="button" onclick="applySubscriptionPlan('basic', true)" id="topPlanBtn_basic" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-400 hover:text-white transition">
+              BASIC
+            </button>
+            <button type="button" onclick="applySubscriptionPlan('pro', true)" id="topPlanBtn_pro" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-brand text-white transition">
+              PRO
+            </button>
+            <button type="button" onclick="applySubscriptionPlan('elite', true)" id="topPlanBtn_elite" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-amber-400 hover:text-white transition flex items-center gap-1">
+              <span>👑 VIP</span>
+            </button>
+          </div>
+
+          <!-- QUICK LEVEL 1 RESET vs LEVEL 7 DEMO DATA PILL (Desktop) -->
+          <div class="hidden lg:flex items-center gap-1 p-1 rounded-xl gq-elevated border border-white/10 shrink-0">
+            <button type="button" onclick="resetToLevel1()" id="topBtnResetLv1" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-300 hover:text-rose-400 hover:bg-rose-500/10 transition flex items-center gap-1 whitespace-nowrap" title="Đặt lại về Level 1 (0 XP, 0 Streak) như người dùng mới">
+              <span>🔄 Reset Lv.1</span>
+            </button>
+            <button type="button" onclick="loadDemoLevel7()" id="topBtnDemoLv7" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-brand hover:bg-brand hover:text-white transition flex items-center gap-1 whitespace-nowrap" title="Nạp dữ liệu mẫu Level 7 đầy đủ biểu đồ để báo cáo">
+              <span>🚀 Demo Lv.7</span>
+            </button>
+          </div>
         </div>
 
-        <!-- QUICK LEVEL 1 RESET vs LEVEL 7 DEMO DATA PILL -->
-        <div class="hidden sm:flex items-center gap-1 p-1 rounded-xl gq-elevated border border-white/10 shrink-0">
-          <button type="button" onclick="resetToLevel1()" id="topBtnResetLv1" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-300 hover:text-rose-400 hover:bg-rose-500/10 transition flex items-center gap-1" title="Đặt lại về Level 1 (0 XP, 0 Streak) như người dùng mới">
-            <span>🔄 Reset Level 1</span>
+        <!-- Right Side: Compact Controls (Single Row, Zero Wrap on Mobile) -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <!-- Mobile Plan Crown Button -->
+          <button onclick="openPricingModal()" class="flex lg:hidden w-8 h-8 rounded-lg gq-elevated hover:border-amber-400 items-center justify-center text-amber-400 shrink-0" title="Gói Đăng Ký (3 Tiers)">
+            <i class="fa-solid fa-crown text-xs"></i>
           </button>
-          <button type="button" onclick="loadDemoLevel7()" id="topBtnDemoLv7" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-brand hover:bg-brand hover:text-white transition flex items-center gap-1" title="Nạp dữ liệu mẫu Level 7 đầy đủ biểu đồ để báo cáo">
-            <span>🚀 Nạp Demo (Lv.7)</span>
-          </button>
-        </div>
-      </div>
 
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
           <!-- Language Switcher VI | EN -->
-          <button onclick="toggleLanguage()" class="px-3.5 py-1.5 rounded-xl gq-elevated hover:border-brand transition flex items-center gap-2 text-xs font-bold" title="Chuyển đổi Tiếng Việt / Tiếng Anh">
-            <i class="fa-solid fa-language text-brand text-sm"></i>
-            <span id="langBadgeApp">VI | Tiếng Việt</span>
+          <button onclick="toggleLanguage()" class="px-2 sm:px-3 py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center gap-1.5 text-xs font-bold whitespace-nowrap shrink-0" title="Chuyển đổi Tiếng Việt / Tiếng Anh">
+            <i class="fa-solid fa-language text-brand text-xs sm:text-sm"></i>
+            <span id="langBadgeMobile" class="sm:hidden">VI</span>
+            <span id="langBadgeApp" class="hidden sm:inline">VI | Tiếng Việt</span>
           </button>
 
           <!-- Theme Switcher Dark | Light -->
-          <button onclick="toggleTheme()" class="px-3 py-1.5 rounded-xl gq-elevated hover:border-brand transition flex items-center gap-2 text-xs font-bold" title="Đổi giao diện Sáng / Tối">
-            <i id="themeIconApp" class="fa-solid fa-sun text-amber-400"></i>
-            <span id="themeTextApp" class="hidden md:inline">Dark Mode</span>
+          <button onclick="toggleTheme()" class="w-8 h-8 sm:w-auto sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center justify-center gap-1.5 text-xs font-bold shrink-0" title="Đổi giao diện Sáng / Tối">
+            <i id="themeIconApp" class="fa-solid fa-sun text-amber-400 text-xs sm:text-sm"></i>
+            <span id="themeTextApp" class="hidden md:inline whitespace-nowrap">Dark Mode</span>
           </button>
 
-          <!-- Quick Check-in CTA -->
-          <button id="topCheckInBtn" onclick="triggerDailyCheckIn()" class="px-4 py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-2">
+          <!-- Quick Check-in CTA (No Wrap on Mobile!) -->
+          <button id="topCheckInBtn" onclick="triggerDailyCheckIn()" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-[11px] sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
             <i class="fa-solid fa-circle-check"></i>
-            <span id="topCheckInText" data-i18n="btn_checkin">ĐIỂM DANH (+100 XP)</span>
+            <span id="topCheckInText" data-i18n="btn_checkin">ĐIỂM DANH</span>
           </button>
         </div>
       </header>
@@ -1250,26 +1287,14 @@
                 <button onclick="switchAppTab('leaderboard')" class="text-xs font-bold text-brand hover:underline" data-i18n="view_all">Xem tất cả →</button>
               </div>
 
-              <p class="text-xs text-slate-500 dark:text-slate-300 mb-3" data-i18n="mini_lb_sub">
-                Chỉ còn 130 XP nữa để vượt qua Maya Chen và vào Top 3!
+              <p id="miniLbSubText" class="text-xs text-slate-500 dark:text-slate-300 mb-3" data-i18n="mini_lb_sub">
+                Cập nhật thứ hạng trực tiếp theo XP thực tế của bạn!
               </p>
 
-              <div class="space-y-2 text-xs">
-                <div class="p-2.5 rounded-xl gq-elevated flex items-center justify-between">
-                  <span class="font-bold">🥇 1. Taylor Kim</span>
-                  <span class="font-mono font-bold text-amber-400">1,850 XP</span>
-                </div>
-                <div class="p-2.5 rounded-xl gq-elevated flex items-center justify-between">
-                  <span class="font-bold">🥈 2. Aria Bloom</span>
-                  <span class="font-mono font-bold text-slate-300">1,620 XP</span>
-                </div>
-                <div class="p-2.5 rounded-xl gq-elevated flex items-center justify-between">
-                  <span class="font-bold">🥉 3. Maya Chen</span>
-                  <span class="font-mono font-bold text-amber-600">1,410 XP</span>
-                </div>
+              <div id="miniLbListContainer" class="space-y-2 text-xs">
                 <div class="p-2.5 rounded-xl bg-brand/15 border border-brand/40 flex items-center justify-between">
                   <span id="miniLbYouName" class="font-bold text-brand">#4 Alex Rivera (Bạn)</span>
-                  <span class="font-mono font-bold text-brand">1,280 XP</span>
+                  <span class="font-mono font-bold text-brand">0 XP</span>
                 </div>
               </div>
             </div>
@@ -1362,62 +1387,68 @@
       <!-- TAB 4: LEADERBOARD VIEW                                         -->
       <!-- =============================================================== -->
       <section id="tab_leaderboard" class="hidden p-4 sm:p-8 max-w-5xl mx-auto w-full space-y-6">
-        <div>
-          <h1 class="font-display font-bold text-3xl sm:text-4xl uppercase" data-i18n="lb_title">BẢNG XẾP HẠNG CỘNG ĐỒNG</h1>
-          <p class="text-sm text-slate-500 dark:text-slate-300" data-i18n="lb_sub">Cập nhật theo thời gian thực dựa trên XP tích lũy và chuỗi Streak.</p>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 class="font-display font-bold text-2xl sm:text-4xl uppercase" data-i18n="lb_title">BẢNG XẾP HẠNG CỘNG ĐỒNG</h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-300" data-i18n="lb_sub">Cập nhật theo thời gian thực cùng người chơi Cloud & bạn bè.</p>
+          </div>
+          <button onclick="fetchCloudLeaderboard(true)" class="px-3.5 py-2 rounded-xl gq-card hover:border-brand text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0">
+            <i class="fa-solid fa-cloud-arrow-down text-brand"></i>
+            <span>Đồng bộ Cloud</span>
+          </button>
         </div>
 
         <!-- Period Tabs -->
         <div class="grid grid-cols-3 p-1.5 rounded-2xl gq-card">
-          <button onclick="switchLeaderboardPeriod('weekly')" id="lbTab_weekly" class="py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand text-white transition" data-i18n="lb_weekly">TUẦN NÀY (WEEKLY)</button>
-          <button onclick="switchLeaderboardPeriod('monthly')" id="lbTab_monthly" class="py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-brand transition" data-i18n="lb_monthly">THÁNG NÀY (MONTHLY)</button>
-          <button onclick="switchLeaderboardPeriod('alltime')" id="lbTab_alltime" class="py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-brand transition" data-i18n="lb_alltime">MỌI THỜI ĐẠI (ALL TIME)</button>
+          <button onclick="switchLeaderboardPeriod('weekly')" id="lbTab_weekly" class="py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold bg-brand text-white transition" data-i18n="lb_weekly">TUẦN NÀY</button>
+          <button onclick="switchLeaderboardPeriod('monthly')" id="lbTab_monthly" class="py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold text-slate-400 hover:text-brand transition" data-i18n="lb_monthly">THÁNG NÀY</button>
+          <button onclick="switchLeaderboardPeriod('alltime')" id="lbTab_alltime" class="py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold text-slate-400 hover:text-brand transition" data-i18n="lb_alltime">MỌI THỜI ĐẠI</button>
         </div>
 
         <!-- Your Rank Highlight Banner -->
-        <div class="gq-card rounded-2xl p-5 border-brand/50 bg-brand/5 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="font-display font-bold text-3xl text-brand">#4</div>
-            <div id="lbUserAvatar" class="w-11 h-11 rounded-xl bg-brand/20 border border-brand flex items-center justify-center text-xl">🦊</div>
-            <div>
-              <div id="lbUserNameBanner" class="font-bold text-base">Alex Rivera (Bạn)</div>
-              <div class="text-xs text-slate-400">LVL 7 • Spartan Warrior</div>
+        <div class="gq-card rounded-2xl p-4 sm:p-5 border-brand/50 bg-brand/5 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div id="lbUserRankNum" class="font-display font-bold text-2xl sm:text-3xl text-brand shrink-0">#4</div>
+            <div id="lbUserAvatar" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-brand/20 border border-brand flex items-center justify-center text-xl shrink-0">🦊</div>
+            <div class="min-w-0">
+              <div id="lbUserNameBanner" class="font-bold text-sm sm:text-base truncate">Alex Rivera (Bạn)</div>
+              <div id="lbUserLvlBanner" class="text-xs text-slate-400 truncate">LVL 1 • Rookie</div>
             </div>
           </div>
-          <div class="text-right">
-            <div id="lbUserXpText" class="font-display font-bold text-xl text-amber-400">⚡ 1,280 XP</div>
-            <div class="text-xs text-brand font-bold">🔥 23 <span data-i18n="days">ngày</span></div>
+          <div class="text-right shrink-0">
+            <div id="lbUserXpText" class="font-display font-bold text-lg sm:text-xl text-amber-400">⚡ 0 XP</div>
+            <div class="text-xs text-brand font-bold">🔥 <span id="lbUserStreakVal">0</span> <span data-i18n="days">ngày</span></div>
           </div>
         </div>
 
         <!-- Visual Podium Top 3 -->
-        <div class="gq-card rounded-2xl p-6 pt-10">
-          <div class="grid grid-cols-3 gap-4 items-end max-w-lg mx-auto text-center">
+        <div class="gq-card rounded-2xl p-4 sm:p-6 pt-8 sm:pt-10">
+          <div class="grid grid-cols-3 gap-2.5 sm:gap-4 items-end max-w-lg mx-auto text-center">
             <!-- #2 -->
             <div class="flex flex-col items-center">
-              <div class="text-xl mb-1">🥈</div>
-              <div class="w-14 h-14 rounded-2xl bg-slate-400/20 border border-slate-400 flex items-center justify-center text-2xl mb-2">🦋</div>
-              <div class="font-bold text-sm">Aria Bloom</div>
-              <div id="podium2Xp" class="text-xs text-amber-400 font-mono mb-2">1,620 XP</div>
-              <div class="w-full h-24 rounded-t-xl bg-slate-500/20 border-t-2 border-slate-400 flex items-center justify-center font-display font-bold text-2xl">2</div>
+              <div class="text-lg sm:text-xl mb-1">🥈</div>
+              <div id="podium2Avatar" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-400/20 border border-slate-400 flex items-center justify-center text-xl sm:text-2xl mb-2">🦋</div>
+              <div id="podium2Name" class="font-bold text-xs sm:text-sm truncate max-w-full">Aria Bloom</div>
+              <div id="podium2Xp" class="text-[11px] sm:text-xs text-amber-400 font-mono mb-2">1,620 XP</div>
+              <div class="w-full h-20 sm:h-24 rounded-t-xl bg-slate-500/20 border-t-2 border-slate-400 flex items-center justify-center font-display font-bold text-2xl">2</div>
             </div>
 
             <!-- #1 -->
             <div class="flex flex-col items-center">
-              <div class="text-2xl mb-1 animate-bounce">👑</div>
-              <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-3xl mb-2 shadow-lg shadow-amber-500/20">🦁</div>
-              <div class="font-bold text-base">Taylor Kim</div>
-              <div id="podium1Xp" class="text-xs text-amber-400 font-mono mb-2">1,850 XP</div>
-              <div class="w-full h-32 rounded-t-xl bg-gradient-to-t from-brand/20 to-amber-500/30 border-t-2 border-amber-400 flex items-center justify-center font-display font-bold text-3xl text-amber-400">1</div>
+              <div class="text-xl sm:text-2xl mb-1 animate-bounce">👑</div>
+              <div id="podium1Avatar" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-2xl sm:text-3xl mb-2 shadow-lg shadow-amber-500/20">🦁</div>
+              <div id="podium1Name" class="font-bold text-xs sm:text-base truncate max-w-full">Taylor Kim</div>
+              <div id="podium1Xp" class="text-[11px] sm:text-xs text-amber-400 font-mono mb-2">1,850 XP</div>
+              <div class="w-full h-28 sm:h-32 rounded-t-xl bg-gradient-to-t from-brand/20 to-amber-500/30 border-t-2 border-amber-400 flex items-center justify-center font-display font-bold text-3xl text-amber-400">1</div>
             </div>
 
             <!-- #3 -->
             <div class="flex flex-col items-center">
-              <div class="text-xl mb-1">🥉</div>
-              <div class="w-14 h-14 rounded-2xl bg-amber-700/20 border border-amber-600 flex items-center justify-center text-2xl mb-2">🐯</div>
-              <div class="font-bold text-sm">Maya Chen</div>
-              <div id="podium3Xp" class="text-xs text-amber-400 font-mono mb-2">1,410 XP</div>
-              <div class="w-full h-20 rounded-t-xl bg-amber-700/20 border-t-2 border-amber-600 flex items-center justify-center font-display font-bold text-2xl">3</div>
+              <div class="text-lg sm:text-xl mb-1">🥉</div>
+              <div id="podium3Avatar" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-700/20 border border-amber-600 flex items-center justify-center text-xl sm:text-2xl mb-2">🐯</div>
+              <div id="podium3Name" class="font-bold text-xs sm:text-sm truncate max-w-full">Maya Chen</div>
+              <div id="podium3Xp" class="text-[11px] sm:text-xs text-amber-400 font-mono mb-2">1,410 XP</div>
+              <div class="w-full h-16 sm:h-20 rounded-t-xl bg-amber-700/20 border-t-2 border-amber-600 flex items-center justify-center font-display font-bold text-2xl">3</div>
             </div>
           </div>
         </div>
@@ -1563,6 +1594,53 @@
           </div>
         </div>
 
+        <!-- Firebase Cloud Account & Mobile Quick Tools Card -->
+        <div class="gq-card rounded-2xl p-5 sm:p-6 border border-emerald-500/30">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div id="profileCloudIconBox" class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400">TÀI KHOẢN ĐÁM MÂY (FIREBASE)</span>
+                  <span id="profileCloudBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-600/40 text-slate-300">OFFLINE / DEMO</span>
+                </div>
+                <div id="profileCloudInfoText" class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 truncate">
+                  Đăng nhập để đồng bộ XP, Level, Streak & Huy hiệu xuyên thiết bị.
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="profileCloudLoginBtn" onclick="openAuthModal('login')" class="px-4 py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs transition whitespace-nowrap flex items-center gap-1.5">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Đăng Nhập / Đăng Ký</span>
+              </button>
+              <button id="profileCloudLogoutBtn" onclick="handleFirebaseSignOut()" class="hidden px-4 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/40 font-bold text-xs transition whitespace-nowrap flex items-center gap-1.5">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Đăng Xuất</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Quick Presentation Tools (Reset Lv.1 / Demo Lv.7 / Landing Page) -->
+          <div class="mt-4 pt-4 border-t border-slate-200 dark:border-white/10 grid grid-cols-3 gap-2 lg:hidden">
+            <button type="button" onclick="resetToLevel1()" class="py-2 px-2 rounded-xl gq-elevated hover:border-rose-400 text-[11px] font-bold text-slate-300 transition flex items-center justify-center gap-1 whitespace-nowrap">
+              <i class="fa-solid fa-rotate-left text-rose-400"></i>
+              <span>Reset Lv.1</span>
+            </button>
+            <button type="button" onclick="loadDemoLevel7()" class="py-2 px-2 rounded-xl bg-brand/15 text-brand border border-brand/30 text-[11px] font-bold transition flex items-center justify-center gap-1 whitespace-nowrap">
+              <i class="fa-solid fa-rocket"></i>
+              <span>Demo Lv.7</span>
+            </button>
+            <button type="button" onclick="switchMainMode('landing')" class="py-2 px-2 rounded-xl gq-elevated text-[11px] font-bold text-slate-300 transition flex items-center justify-center gap-1 whitespace-nowrap">
+              <i class="fa-solid fa-house text-brand"></i>
+              <span>Trang Chủ</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Subscription Management Card inside Profile Tab -->
         <div class="gq-card rounded-2xl p-6 border border-amber-400/40">
           <div class="flex flex-wrap items-center justify-between gap-4">
@@ -1618,20 +1696,55 @@
       </section>
 
     </main>
+
+    <!-- NATIVE-APP MOBILE BOTTOM NAVIGATION BAR (lg:hidden) -->
+    <nav id="mobileBottomNav" class="lg:hidden fixed bottom-0 inset-x-0 z-40 backdrop-blur-xl bg-white/95 dark:bg-obsidian-950/95 border-t border-slate-200 dark:border-white/10 safe-bottom shadow-[0_-8px_24px_rgba(0,0,0,0.28)]">
+      <div class="grid grid-cols-5 h-16 px-1">
+        <button onclick="switchAppTab('dashboard')" id="mnav_dashboard" class="flex flex-col items-center justify-center gap-1 text-brand font-bold transition relative">
+          <i class="fa-solid fa-table-cells-large text-base"></i>
+          <span class="text-[10px] leading-none truncate" data-i18n="mnav_dash">Tập luyện</span>
+          <span class="mnav-dot w-1.5 h-1.5 rounded-full bg-brand absolute top-1.5"></span>
+        </button>
+
+        <button onclick="switchAppTab('friends')" id="mnav_friends" class="flex flex-col items-center justify-center gap-1 text-slate-400 font-semibold transition relative">
+          <i class="fa-solid fa-user-group text-base"></i>
+          <span class="text-[10px] leading-none truncate" data-i18n="mnav_friends">Bạn bè</span>
+          <span class="mnav-dot hidden w-1.5 h-1.5 rounded-full bg-brand absolute top-1.5"></span>
+        </button>
+
+        <button onclick="switchAppTab('challenges')" id="mnav_challenges" class="flex flex-col items-center justify-center gap-1 text-slate-400 font-semibold transition relative">
+          <i class="fa-solid fa-trophy text-base"></i>
+          <span class="text-[10px] leading-none truncate" data-i18n="mnav_challenges">Thử thách</span>
+          <span class="mnav-dot hidden w-1.5 h-1.5 rounded-full bg-brand absolute top-1.5"></span>
+        </button>
+
+        <button onclick="switchAppTab('leaderboard')" id="mnav_leaderboard" class="flex flex-col items-center justify-center gap-1 text-slate-400 font-semibold transition relative">
+          <i class="fa-solid fa-ranking-star text-base"></i>
+          <span class="text-[10px] leading-none truncate" data-i18n="mnav_lb">Xếp hạng</span>
+          <span class="mnav-dot hidden w-1.5 h-1.5 rounded-full bg-brand absolute top-1.5"></span>
+        </button>
+
+        <button onclick="switchAppTab('profile')" id="mnav_profile" class="flex flex-col items-center justify-center gap-1 text-slate-400 font-semibold transition relative">
+          <i class="fa-solid fa-id-badge text-base"></i>
+          <span class="text-[10px] leading-none truncate" data-i18n="mnav_profile">Hồ sơ</span>
+          <span class="mnav-dot hidden w-1.5 h-1.5 rounded-full bg-brand absolute top-1.5"></span>
+        </button>
+      </div>
+    </nav>
   </div>
 
 
   <!-- ===================================================================== -->
-  <!-- 3. FLOATING AI COACH DRAWER & LAUNCHER BUTTON                         -->
+  <!-- 3. FLOATING AI COACH DRAWER & COMPACT MOBILE LAUNCHER BUTTON          -->
   <!-- ===================================================================== -->
-  <!-- Floating Bottom-Right AI Coach Button -->
-  <button onclick="toggleAICoachDrawer()" class="fixed bottom-6 right-6 z-40 px-4 py-3 rounded-2xl bg-gradient-to-r from-brand to-amber-500 text-white shadow-2xl shadow-brand/40 hover:scale-105 transition flex items-center gap-3 border border-white/20">
-    <span id="fabCoachEmoji" class="text-2xl">😎</span>
+  <!-- Floating Bottom-Right AI Coach Button (Compact Circle Above Bottom Bar on Mobile, Full Pill on Desktop) -->
+  <button id="floatingCoachBtn" onclick="toggleAICoachDrawer()" class="fixed bottom-[76px] right-3.5 lg:bottom-6 lg:right-6 z-40 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-3 rounded-full sm:rounded-2xl bg-gradient-to-r from-brand to-amber-500 text-white shadow-xl shadow-brand/40 hover:scale-105 active:scale-95 transition flex items-center justify-center sm:gap-3 border border-white/25" title="Chat với AI Coach">
+    <span id="fabCoachEmoji" class="text-xl sm:text-2xl leading-none">😎</span>
     <div class="text-left hidden sm:block">
       <div class="text-[10px] font-extrabold uppercase tracking-wider leading-none opacity-90">AI COACH ONLINE</div>
       <div id="fabCoachTitle" class="font-bold text-xs mt-0.5">Chat với Max</div>
     </div>
-    <span class="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-ping"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-ping absolute -top-0.5 -right-0.5 sm:static"></span>
   </button>
 
   <!-- Slide-over AI Coach Chat Drawer -->
@@ -1942,35 +2055,104 @@
     </div>
   </div>
 
-  <!-- Login / Register Modal -->
-  <div id="authModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="gq-card rounded-3xl max-w-md w-full p-7 relative border-brand/30">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg gq-elevated flex items-center justify-center">
+  <!-- Firebase Auth Modal: Login / Register (Email + Phone + Password) / Forgot Password -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="gq-card rounded-3xl max-w-md w-full p-6 sm:p-7 relative border-brand/30 my-auto">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg gq-elevated flex items-center justify-center text-slate-400 hover:text-rose-400">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <div class="text-center mb-6">
-        <div class="w-12 h-12 mx-auto rounded-2xl bg-brand text-white flex items-center justify-center text-xl shadow-lg shadow-brand/30 mb-3">
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-brand to-amber-500 text-white flex items-center justify-center text-xl shadow-lg shadow-brand/30 mb-3">
           <i class="fa-solid fa-dumbbell"></i>
         </div>
-        <h3 class="font-display font-bold text-3xl uppercase">WELCOME BACK</h3>
-        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-1">YOUR GAINS ARE WAITING FOR YOU</p>
+        <h3 id="authModalTitle" class="font-display font-bold text-2xl sm:text-3xl uppercase">ĐĂNG NHẬP CLOUD</h3>
+        <p id="authModalSub" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1">ĐỒNG BỘ XP • LEVEL • STREAK XUYÊN THIẾT BỊ</p>
       </div>
 
-      <form onsubmit="handleDemoLogin(event)" class="space-y-4">
+      <!-- Auth Mode Switcher Tabs (Login / Register) -->
+      <div id="authModeTabs" class="grid grid-cols-2 p-1 rounded-xl gq-elevated mb-4">
+        <button type="button" onclick="switchAuthMode('login')" id="authTab_login" class="py-2 rounded-lg text-xs font-bold bg-brand text-white transition">
+          Đăng Nhập
+        </button>
+        <button type="button" onclick="switchAuthMode('register')" id="authTab_register" class="py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition">
+          Đăng Ký Mới
+        </button>
+      </div>
+
+      <!-- Inline Feedback Banner -->
+      <div id="authMessageBox" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold leading-relaxed"></div>
+
+      <!-- FORM 1: LOGIN -->
+      <form id="authFormLogin" onsubmit="handleFirebaseLogin(event)" class="space-y-3.5">
         <div>
-          <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">EMAIL</label>
-          <input type="email" value="alex.rivera@gymquest.io" class="w-full px-4 py-3 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">EMAIL</label>
+          <input id="loginEmailInput" type="email" placeholder="tenban@gmail.com" class="w-full px-4 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
         </div>
         <div>
-          <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">MẬT KHẨU</label>
-          <input type="password" value="••••••••••••" class="w-full px-4 py-3 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+          <div class="flex items-center justify-between mb-1">
+            <label class="text-[11px] font-bold uppercase text-slate-400">MẬT KHẨU</label>
+            <button type="button" onclick="switchAuthMode('forgot')" class="text-[11px] font-bold text-brand hover:underline">Quên mật khẩu?</button>
+          </div>
+          <input id="loginPasswordInput" type="password" placeholder="Nhập mật khẩu của bạn..." class="w-full px-4 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
         </div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
-          <span>ĐĂNG NHẬP (DEMO ALEX RIVERA)</span>
+        <button type="submit" id="loginSubmitBtn" class="w-full py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
+          <span>Đăng Nhập & Đồng Bộ</span>
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
+
+      <!-- FORM 2: REGISTER (NAME + PHONE + EMAIL + PASSWORD) -->
+      <form id="authFormRegister" onsubmit="handleFirebaseRegister(event)" class="hidden space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">HỌ & TÊN</label>
+            <input id="regNameInput" type="text" placeholder="VD: Minh Thuận" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">SỐ ĐIỆN THOẠI</label>
+            <input id="regPhoneInput" type="tel" placeholder="09xx xxx xxx" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">EMAIL</label>
+          <input id="regEmailInput" type="email" placeholder="tenban@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+        </div>
+        <div>
+          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">MẬT KHẨU (TỐI THIỂU 6 KÝ TỰ)</label>
+          <input id="regPasswordInput" type="password" minlength="6" placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+        </div>
+        <button type="submit" id="registerSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Tạo Tài Khoản Cloud</span>
+        </button>
+      </form>
+
+      <!-- FORM 3: FORGOT PASSWORD (REAL FIREBASE EMAIL RESET) -->
+      <form id="authFormForgot" onsubmit="handleFirebaseForgotPassword(event)" class="hidden space-y-4">
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Nhập địa chỉ Email bạn đã đăng ký GymQuest. Hệ thống Firebase sẽ gửi đường dẫn đặt lại mật khẩu thật vào hộp thư của bạn.
+        </p>
+        <div>
+          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">EMAIL ĐÃ ĐĂNG KÝ</label>
+          <input id="forgotEmailInput" type="email" placeholder="tenban@gmail.com" class="w-full px-4 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
+        </div>
+        <button type="submit" id="forgotSubmitBtn" class="w-full py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Gửi Link Đặt Lại Mật Khẩu</span>
+        </button>
+        <button type="button" onclick="switchAuthMode('login')" class="w-full py-2 text-xs font-bold text-slate-400 hover:text-brand transition">
+          ← Quay lại Đăng Nhập
+        </button>
+      </form>
+
+      <!-- Quick Offline Demo Divider -->
+      <div class="mt-5 pt-4 border-t border-slate-200 dark:border-white/10">
+        <button type="button" onclick="handleDemoLogin(event)" class="w-full py-2.5 rounded-xl gq-elevated hover:border-brand text-xs font-bold text-slate-300 hover:text-brand transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-400"></i>
+          <span>Vào Nhanh Bản Demo (Không Cần Đăng Nhập)</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2056,6 +2238,11 @@
         <div>
           <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1.5">USERNAME</label>
           <input id="editProfileUsernameInput" type="text" value="@alexquest" class="w-full px-4 py-3 rounded-xl gq-elevated text-sm font-semibold focus:outline-none focus:border-brand" required />
+        </div>
+
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1.5">SỐ ĐIỆN THOẠI (PHONE)</label>
+          <input id="editProfilePhoneInput" type="tel" placeholder="09xx xxx xxx" class="w-full px-4 py-3 rounded-xl gq-elevated text-sm font-semibold focus:outline-none focus:border-brand" />
         </div>
 
         <div class="grid grid-cols-2 gap-3 pt-2">
@@ -3121,8 +3308,13 @@
       userProfile: {
         name: localStorage.getItem('gq_user_name') || 'Alex Rivera',
         username: localStorage.getItem('gq_user_handle') || '@alexquest',
+        phone: localStorage.getItem('gq_user_phone') || '',
+        email: localStorage.getItem('gq_user_email') || '',
         avatar: localStorage.getItem('gq_user_avatar') || '🦊'
       },
+      firebaseUser: null,
+      cloudLeaderboardUsers: [],
+      activeLeaderboardPeriod: 'weekly',
       selectedEditAvatar: '🦊',
       currentCoach: 'max', // 'max', 'steel', 'sakura'
       progressMode: initialProgress.mode, // 'fresh' (Lv.1) or 'demo' (Lv.7)
@@ -3243,6 +3435,11 @@
         menu_challenges: 'Thử Thách',
         menu_leaderboard: 'Bảng Xếp Hạng',
         menu_profile: 'Hồ Sơ & Huy Hiệu',
+        mnav_dash: 'Tập luyện',
+        mnav_friends: 'Bạn bè',
+        mnav_challenges: 'Thử thách',
+        mnav_lb: 'Xếp hạng',
+        mnav_profile: 'Hồ sơ',
         menu_logout: 'Quay về Landing Page',
         active_coach_label: 'AI Coach Đang Chọn:',
         btn_checkin: 'ĐIỂM DANH (+100 XP)',
@@ -3470,6 +3667,11 @@
         menu_challenges: 'Challenges',
         menu_leaderboard: 'Leaderboard',
         menu_profile: 'Profile & Badges',
+        mnav_dash: 'Workout',
+        mnav_friends: 'Friends',
+        mnav_challenges: 'Quests',
+        mnav_lb: 'Rank',
+        mnav_profile: 'Profile',
         menu_logout: 'Back to Landing',
         active_coach_label: 'Active AI Coach:',
         btn_checkin: 'CHECK IN (+100 XP)',
@@ -3773,6 +3975,7 @@
       renderLeaderboard('weekly');
       selectCoachGlobal(state.currentCoach, true);
       applyLanguage();
+      initFirebaseEngine();
     });
 
     function saveProgressStateToStorage() {
@@ -3789,6 +3992,7 @@
           weeklyXpHistory: state.weeklyXpHistory
         }));
       } catch (e) { /* ignore */ }
+      if (typeof scheduleFirestoreSync === 'function') scheduleFirestoreSync();
     }
 
     function getRankMetaByLevel(lvl) {
@@ -3857,12 +4061,13 @@
       const checkBtn = document.getElementById('topCheckInBtn');
       const checkTxt = document.getElementById('topCheckInText');
       if (checkBtn && checkTxt) {
+        const isSmallScreen = window.innerWidth < 640;
         if (state.checkedInToday) {
-          checkBtn.className = 'px-4 py-2 rounded-xl bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition flex items-center gap-2';
-          checkTxt.textContent = state.lang === 'vi' ? 'ĐÃ CHECK-IN ✓' : 'CHECKED IN ✓';
+          checkBtn.className = 'px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-emerald-500 text-white font-bold text-[11px] sm:text-sm shadow-lg shadow-emerald-500/25 transition flex items-center gap-1.5 whitespace-nowrap shrink-0';
+          checkTxt.textContent = state.lang === 'vi' ? (isSmallScreen ? 'ĐÃ TẬP ✓' : 'ĐÃ CHECK-IN ✓') : (isSmallScreen ? 'DONE ✓' : 'CHECKED IN ✓');
         } else {
-          checkBtn.className = 'px-4 py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-2';
-          checkTxt.textContent = state.lang === 'vi' ? 'ĐIỂM DANH (+100 XP)' : 'CHECK IN (+100 XP)';
+          checkBtn.className = 'px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-[11px] sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-1.5 whitespace-nowrap shrink-0';
+          checkTxt.textContent = state.lang === 'vi' ? (isSmallScreen ? 'ĐIỂM DANH' : 'ĐIỂM DANH (+100 XP)') : (isSmallScreen ? 'CHECK IN' : 'CHECK IN (+100 XP)');
         }
       }
 
@@ -4232,6 +4437,7 @@
       });
 
       updateWorkoutHeaderMetrics();
+      if (notify && typeof scheduleFirestoreSync === 'function') scheduleFirestoreSync();
 
       if (notify) {
         launchConfetti();
@@ -4328,6 +4534,8 @@
       state.selectedEditAvatar = state.userProfile.avatar;
       document.getElementById('editProfileNameInput').value = state.userProfile.name;
       document.getElementById('editProfileUsernameInput').value = state.userProfile.username;
+      const phoneEl = document.getElementById('editProfilePhoneInput');
+      if (phoneEl) phoneEl.value = state.userProfile.phone || '';
       renderAvatarPickerGrid();
       document.getElementById('editProfileModal').classList.remove('hidden');
     }
@@ -4359,20 +4567,24 @@
       const newName = document.getElementById('editProfileNameInput').value.trim() || 'Alex Rivera';
       let newHandle = document.getElementById('editProfileUsernameInput').value.trim() || '@alexquest';
       if (!newHandle.startsWith('@')) newHandle = '@' + newHandle;
+      const newPhone = (document.getElementById('editProfilePhoneInput')?.value || '').trim();
 
       state.userProfile.name = newName;
       state.userProfile.username = newHandle;
+      state.userProfile.phone = newPhone;
       state.userProfile.avatar = state.selectedEditAvatar;
 
       try {
         localStorage.setItem('gq_user_name', newName);
         localStorage.setItem('gq_user_handle', newHandle);
+        localStorage.setItem('gq_user_phone', newPhone);
         localStorage.setItem('gq_user_avatar', state.selectedEditAvatar);
       } catch (err) { /* ignore storage errors */ }
 
       syncUserProfileAcrossDOM();
-      renderLeaderboard('weekly');
+      renderLeaderboard(state.activeLeaderboardPeriod || 'weekly');
       selectCoachGlobal(state.currentCoach, true);
+      if (typeof scheduleFirestoreSync === 'function') scheduleFirestoreSync();
       closeEditProfileModal();
 
       showToast(state.lang === 'vi'
@@ -4406,6 +4618,7 @@
       tabs.forEach(t => {
         const section = document.getElementById('tab_' + t);
         const navBtn = document.getElementById('nav_' + t);
+        const mNavBtn = document.getElementById('mnav_' + t);
         if (section) section.classList.toggle('hidden', t !== tabId);
         if (navBtn) {
           if (t === tabId) {
@@ -4414,7 +4627,20 @@
             navBtn.className = 'nav-tab-btn flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand/10 hover:text-brand transition whitespace-nowrap';
           }
         }
+        if (mNavBtn) {
+          const dot = mNavBtn.querySelector('.mnav-dot');
+          if (t === tabId) {
+            mNavBtn.className = 'flex flex-col items-center justify-center gap-1 text-brand font-bold transition relative';
+            if (dot) dot.classList.remove('hidden');
+          } else {
+            mNavBtn.className = 'flex flex-col items-center justify-center gap-1 text-slate-400 font-semibold transition relative';
+            if (dot) dot.classList.add('hidden');
+          }
+        }
       });
+      if (tabId === 'leaderboard') {
+        renderLeaderboard(state.activeLeaderboardPeriod || 'weekly');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -4466,6 +4692,7 @@
       try {
         localStorage.setItem('gq_custom_exercises', JSON.stringify(state.exercises));
       } catch (e) { /* ignore */ }
+      if (typeof scheduleFirestoreSync === 'function') scheduleFirestoreSync();
     }
 
     function updateWorkoutHeaderMetrics() {
@@ -5408,6 +5635,7 @@
       setEl('profileCoachCardQuote', formatCoachString(state.lang === 'vi' ? c.quote_vi : c.quote_en));
 
       resetAIChatMessages();
+      if (!silent && typeof scheduleFirestoreSync === 'function') scheduleFirestoreSync();
       if (!silent) {
         showToast(`${c.emoji} ${state.lang === 'vi' ? 'Đã chọn AI Coach: ' : 'Switched AI Coach to '}${c.name}`);
       }
@@ -5782,85 +6010,188 @@
       showToast('🎉 Đã tạo và tham gia thử thách mới!');
     }
 
-    // --- LEADERBOARD VIEW ---
+    // --- LEADERBOARD VIEW (DEDUPLICATED + CLOUD SYNCED + MINI DASHBOARD SYNC) ---
     function switchLeaderboardPeriod(period) {
+      state.activeLeaderboardPeriod = period;
       ['weekly', 'monthly', 'alltime'].forEach(p => {
         const btn = document.getElementById('lbTab_' + p);
+        if (!btn) return;
         btn.className = p === period
-          ? 'py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand text-white transition'
-          : 'py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-brand transition';
+          ? 'py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold bg-brand text-white transition'
+          : 'py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold text-slate-400 hover:text-brand transition';
       });
       renderLeaderboard(period);
     }
 
-    function renderLeaderboard(period) {
-      const mult = period === 'weekly' ? 1 : period === 'monthly' ? 3.5 : 10;
-      const myWeeklySum = state.weeklyXpHistory.reduce((a, b) => a + b, 0);
-      const myDisplayXp = period === 'weekly' ? (myWeeklySum + state.xp) : (state.totalXp > 0 ? state.totalXp : Math.round(state.xp * mult));
-      
+    function renderLeaderboard(period = 'weekly') {
+      state.activeLeaderboardPeriod = period;
+      const myWeeklySum = state.weeklyXpHistory.reduce((a, b) => a + (b || 0), 0);
+      const myDisplayXp = period === 'weekly'
+        ? myWeeklySum
+        : period === 'monthly'
+          ? Math.max(myWeeklySum, Math.round(state.totalXp * 0.35))
+          : state.totalXp;
+
       const rankMeta = getRankMetaByLevel(state.level);
       const youTag = state.lang === 'vi' ? 'Bạn' : 'You';
+      const myUid = state.firebaseUser ? state.firebaseUser.uid : null;
+      const crownTag = state.subscriptionPlan === 'elite' ? ' 👑' : '';
 
-      // Build unified leaderboard list including user and friends
-      let allContenders = [
-        { name: 'Taylor Kim', lvl: 'LVL 10 • Beast', streak: 58, xp: Math.round(1850 * mult), avatar: '🦁', isMe: false },
-        { name: 'Aria Bloom', lvl: 'LVL 11 • Legend', streak: 34, xp: Math.round(1620 * mult), avatar: '🦋', isMe: false },
-        { name: 'Maya Chen', lvl: 'LVL 9 • Titan', streak: 41, xp: Math.round(1410 * mult), avatar: '🐯', isMe: false },
-        { name: `${state.userProfile.name} (${youTag})`, lvl: `LVL ${state.level} • ${rankMeta.short}`, streak: state.streak, xp: myDisplayXp, avatar: state.userProfile.avatar, isMe: true },
-        ...state.friends.map(f => ({ name: f.name, lvl: f.lvl, streak: f.streak, xp: Math.round(f.xp * (period === 'weekly' ? 0.3 : period === 'monthly' ? 1 : 2.5)), avatar: f.avatar, isMe: false }))
-      ];
+      // 1. Add current player once
+      const contenderMap = new Map();
+      const meKey = myUid ? `uid_${myUid}` : 'me_local';
+      contenderMap.set(meKey, {
+        name: `${state.userProfile.name}${crownTag} (${youTag})`,
+        rawName: state.userProfile.name,
+        lvl: `LVL ${state.level} • ${rankMeta.short}`,
+        streak: state.streak,
+        xp: myDisplayXp,
+        avatar: state.userProfile.avatar,
+        isMe: true,
+        isCloud: !!state.firebaseUser
+      });
 
-      // Sort descending by XP
-      allContenders.sort((a, b) => b.xp - a.xp);
+      // 2. Merge real Firestore Cloud players (excluding current user to prevent duplicates)
+      if (Array.isArray(state.cloudLeaderboardUsers)) {
+        state.cloudLeaderboardUsers.forEach(u => {
+          if (!u || (myUid && u.uid === myUid)) return;
+          const uWeekly = Array.isArray(u.weeklyXpHistory)
+            ? u.weeklyXpHistory.reduce((a, b) => a + (b || 0), 0)
+            : (u.xp || 0);
+          const uTotal = u.totalXp || u.xp || 0;
+          const uXp = period === 'weekly' ? uWeekly : period === 'monthly' ? Math.max(uWeekly, Math.round(uTotal * 0.35)) : uTotal;
+          const uRank = getRankMetaByLevel(u.level || 1);
+          const uCrown = u.subscriptionPlan === 'elite' ? ' 👑' : '';
+          contenderMap.set(`uid_${u.uid}`, {
+            name: `${u.name || 'Chiến Binh'}${uCrown}`,
+            rawName: u.name || 'Chiến Binh',
+            lvl: `LVL ${u.level || 1} • ${uRank.short}`,
+            streak: u.streak || 0,
+            xp: uXp,
+            avatar: u.avatar || '🦊',
+            isMe: false,
+            isCloud: true
+          });
+        });
+      }
 
-      // Find user rank index
+      // 3. Merge demo friends cleanly (deduplicated by name — no double Taylor Kim / Aria Bloom / Maya Chen!)
+      const friendXpScale = period === 'weekly' ? 0.25 : period === 'monthly' ? 0.9 : 3.2;
+      state.friends.forEach(f => {
+        const key = 'demo_' + f.name.toLowerCase();
+        if (!contenderMap.has(key)) {
+          contenderMap.set(key, {
+            name: f.name,
+            rawName: f.name,
+            lvl: f.lvl,
+            streak: f.streak,
+            xp: Math.round(f.xp * friendXpScale),
+            avatar: f.avatar,
+            isMe: false,
+            isCloud: false
+          });
+        }
+      });
+
+      const allContenders = Array.from(contenderMap.values()).sort((a, b) => {
+        if (b.xp !== a.xp) return b.xp - a.xp;
+        return (b.streak || 0) - (a.streak || 0);
+      });
+
       const myRankIdx = allContenders.findIndex(c => c.isMe);
-      const myRankNumber = myRankIdx >= 0 ? myRankIdx + 1 : 4;
+      const myRankNumber = myRankIdx >= 0 ? myRankIdx + 1 : allContenders.length;
 
-      // Update banner rank & XP
-      const bannerRankEl = document.querySelector('#tab_leaderboard .font-display.text-3xl');
-      if (bannerRankEl) bannerRankEl.textContent = `#${myRankNumber}`;
-      document.getElementById('lbUserXpText').textContent = '⚡ ' + myDisplayXp.toLocaleString() + ' XP';
+      // Sync Rank Badge everywhere (Leaderboard Banner + Dashboard Rank Pill + Sidebar)
+      const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      setTxt('lbUserRankNum', `#${myRankNumber}`);
+      setTxt('lbUserNameBanner', `${state.userProfile.name}${crownTag} (${youTag})`);
+      setTxt('lbUserLvlBanner', `LVL ${state.level} • ${rankMeta.title}`);
+      setTxt('lbUserXpText', `⚡ ${myDisplayXp.toLocaleString()} XP`);
+      setTxt('lbUserStreakVal', state.streak);
+      setTxt('lbUserAvatar', state.userProfile.avatar);
+      setTxt('sidebarRankBadge', `#${myRankNumber}`);
+      setTxt('userRankBadgeMain', `Rank #${myRankNumber}`);
 
-      // Top 3 Podium
-      const top1 = allContenders[0] || { name: 'Taylor Kim', xp: 1850, avatar: '🦁' };
-      const top2 = allContenders[1] || { name: 'Aria Bloom', xp: 1620, avatar: '🦋' };
-      const top3 = allContenders[2] || { name: 'Maya Chen', xp: 1410, avatar: '🐯' };
+      // Sync Top 3 Podium (Avatar + Name + XP)
+      const top1 = allContenders[0] || { name: 'Aria Bloom', xp: 2275, avatar: '🦋' };
+      const top2 = allContenders[1] || { name: 'Taylor Kim', xp: 1800, avatar: '🦁' };
+      const top3 = allContenders[2] || { name: 'Maya Chen', xp: 1450, avatar: '🐯' };
 
-      document.getElementById('podium1Xp').textContent = top1.xp.toLocaleString() + ' XP';
-      const p1NameEl = document.getElementById('podium1Xp')?.previousElementSibling;
-      if (p1NameEl) p1NameEl.textContent = top1.name;
+      setTxt('podium1Avatar', top1.avatar);
+      setTxt('podium1Name', top1.name);
+      setTxt('podium1Xp', top1.xp.toLocaleString() + ' XP');
 
-      document.getElementById('podium2Xp').textContent = top2.xp.toLocaleString() + ' XP';
-      const p2NameEl = document.getElementById('podium2Xp')?.previousElementSibling;
-      if (p2NameEl) p2NameEl.textContent = top2.name;
+      setTxt('podium2Avatar', top2.avatar);
+      setTxt('podium2Name', top2.name);
+      setTxt('podium2Xp', top2.xp.toLocaleString() + ' XP');
 
-      document.getElementById('podium3Xp').textContent = top3.xp.toLocaleString() + ' XP';
-      const p3NameEl = document.getElementById('podium3Xp')?.previousElementSibling;
-      if (p3NameEl) p3NameEl.textContent = top3.name;
+      setTxt('podium3Avatar', top3.avatar);
+      setTxt('podium3Name', top3.name);
+      setTxt('podium3Xp', top3.xp.toLocaleString() + ' XP');
 
-      // Render list for ranks 4 onwards (or all if needed)
+      // Sync Full Leaderboard List
       const listContainer = document.getElementById('leaderboardListContainer');
       if (listContainer) {
         listContainer.innerHTML = allContenders.map((r, idx) => {
           const rankNum = idx + 1;
+          const medal = rankNum === 1 ? '🥇' : rankNum === 2 ? '🥈' : rankNum === 3 ? '🥉' : rankNum;
+          const cloudPill = r.isCloud
+            ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 ml-1">☁️ Cloud</span>`
+            : '';
           return `
-            <div class="gq-card rounded-2xl p-4 flex items-center justify-between ${r.isMe ? 'border-brand bg-brand/10' : ''}">
-              <div class="flex items-center gap-4">
-                <span class="font-display font-bold text-lg w-6 text-center ${r.isMe ? 'text-brand' : 'text-slate-400'}">${rankNum}</span>
-                <div class="w-10 h-10 rounded-xl gq-elevated flex items-center justify-center text-xl">${r.avatar}</div>
-                <div>
-                  <div class="font-bold text-sm sm:text-base ${r.isMe ? 'text-brand' : ''}">${r.name}</div>
-                  <div class="text-xs text-slate-400">${r.lvl}</div>
+            <div class="gq-card rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-2 ${r.isMe ? 'border-brand bg-brand/10 ring-1 ring-brand/40' : ''}">
+              <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                <span class="font-display font-bold text-base sm:text-lg w-7 text-center shrink-0 ${r.isMe ? 'text-brand' : 'text-slate-400'}">${medal}</span>
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl gq-elevated flex items-center justify-center text-lg sm:text-xl shrink-0">${r.avatar}</div>
+                <div class="min-w-0">
+                  <div class="font-bold text-xs sm:text-base truncate flex items-center ${r.isMe ? 'text-brand' : ''}">
+                    <span class="truncate">${r.name}</span>${cloudPill}
+                  </div>
+                  <div class="text-[11px] sm:text-xs text-slate-400 truncate">${r.lvl}</div>
                 </div>
               </div>
-              <div class="flex items-center gap-5">
+              <div class="flex items-center gap-3 sm:gap-5 shrink-0">
                 <span class="text-xs font-bold text-brand">🔥 ${r.streak}</span>
-                <span class="font-mono font-bold text-sm text-amber-400">⚡ ${r.xp.toLocaleString()} XP</span>
+                <span class="font-mono font-bold text-xs sm:text-sm text-amber-400">⚡ ${r.xp.toLocaleString()} XP</span>
               </div>
             </div>
           `;
         }).join('');
+      }
+
+      // Sync Compact Mini Leaderboard Card on Dashboard (Always shows Top 3 + User!)
+      const miniList = document.getElementById('miniLbListContainer');
+      const miniSub = document.getElementById('miniLbSubText');
+      if (miniSub) {
+        if (myRankIdx === 0) {
+          miniSub.textContent = state.lang === 'vi'
+            ? '👑 Bạn đang giữ vị trí #1 dẫn đầu Bảng Xếp Hạng!'
+            : '👑 You are #1 on top of the Leaderboard!';
+        } else {
+          const above = allContenders[myRankIdx - 1];
+          const gap = Math.max(10, (above ? above.xp : 0) - myDisplayXp + 10);
+          miniSub.textContent = state.lang === 'vi'
+            ? `Chỉ cần thêm ${gap.toLocaleString()} XP để vượt qua ${above.rawName} lên hạng #${myRankNumber - 1}!`
+            : `Only ${gap.toLocaleString()} XP more to overtake ${above.rawName} for Rank #${myRankNumber - 1}!`;
+        }
+      }
+      if (miniList) {
+        const medals = ['🥇', '🥈', '🥉'];
+        const top3Html = allContenders.slice(0, 3).map((c, idx) => `
+          <div class="p-2.5 rounded-xl ${c.isMe ? 'bg-brand/15 border border-brand/40' : 'gq-elevated'} flex items-center justify-between gap-2">
+            <span class="font-bold truncate ${c.isMe ? 'text-brand' : ''}">${medals[idx]} ${idx + 1}. ${c.name}</span>
+            <span class="font-mono font-bold shrink-0 ${c.isMe ? 'text-brand' : 'text-amber-400'}">${c.xp.toLocaleString()} XP</span>
+          </div>
+        `).join('');
+
+        const meRowHtml = myRankNumber > 3 ? `
+          <div class="p-2.5 rounded-xl bg-brand/15 border border-brand/40 flex items-center justify-between gap-2">
+            <span id="miniLbYouName" class="font-bold text-brand truncate">#${myRankNumber} ${state.userProfile.name} (${youTag})</span>
+            <span class="font-mono font-bold text-brand shrink-0">${myDisplayXp.toLocaleString()} XP</span>
+          </div>
+        ` : '';
+
+        miniList.innerHTML = top3Html + meRowHtml;
       }
     }
 
@@ -5884,9 +6215,13 @@
         const key = el.getAttribute('data-i18n');
         if (dict[key] !== undefined) el.textContent = dict[key];
       });
-      document.getElementById('langBadgeLanding').textContent = state.lang.toUpperCase();
-      document.getElementById('langBadgeMobile').textContent = state.lang.toUpperCase();
-      document.getElementById('langBadgeApp').textContent = state.lang === 'vi' ? 'VI | Tiếng Việt' : 'EN | English';
+      const lbL = document.getElementById('langBadgeLanding');
+      const lbM = document.getElementById('langBadgeMobile');
+      const lbA = document.getElementById('langBadgeApp');
+      if (lbL) lbL.textContent = state.lang.toUpperCase();
+      if (lbM) lbM.textContent = state.lang.toUpperCase();
+      if (lbA) lbA.textContent = state.lang === 'vi' ? 'VI | Tiếng Việt' : 'EN | English';
+      renderRealTimeCalendarAndStats();
 
       const searchInput = document.getElementById('friendSearchInput');
       if (searchInput) {
@@ -5929,7 +6264,10 @@
     // --- MODALS ---
     function openCoachModal() { document.getElementById('coachModal').classList.remove('hidden'); }
     function closeCoachModal() { document.getElementById('coachModal').classList.add('hidden'); }
-    function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); }
+    function openAuthModal(mode = 'login') {
+      switchAuthMode(mode);
+      document.getElementById('authModal').classList.remove('hidden');
+    }
     function closeAuthModal() { document.getElementById('authModal').classList.add('hidden'); }
     function openAddFriendModal() { document.getElementById('addFriendModal').classList.remove('hidden'); }
     function closeAddFriendModal() { document.getElementById('addFriendModal').classList.add('hidden'); }
@@ -5998,6 +6336,460 @@
       }
       draw();
     }
+
+    // =========================================================================
+    // FIREBASE AUTH + FIRESTORE REAL-TIME CLOUD SYNC (PROJECT: gymquest-app-c4cc4)
+    // =========================================================================
+    const FIREBASE_CONFIG = {
+      apiKey: "AIzaSyB9g1fBiHtK1LGZ1rwcVEErpvepCSydixk",
+      authDomain: "gymquest-app-c4cc4.firebaseapp.com",
+      projectId: "gymquest-app-c4cc4",
+      storageBucket: "gymquest-app-c4cc4.firebasestorage.app",
+      messagingSenderId: "642787936324",
+      appId: "1:642787936324:web:16fcfc20b4ef8a7bed1411"
+    };
+
+    let fbAuth = null;
+    let fbDb = null;
+    let firestoreSyncTimer = null;
+    let isHydratingFromCloud = false;
+
+    function initFirebaseEngine() {
+      try {
+        if (typeof firebase === 'undefined') {
+          console.warn('Firebase SDK unavailable (offline mode).');
+          return;
+        }
+        if (!firebase.apps.length) {
+          firebase.initializeApp(FIREBASE_CONFIG);
+        }
+        fbAuth = firebase.auth();
+        fbDb = firebase.firestore();
+
+        fbAuth.onAuthStateChanged(async (user) => {
+          state.firebaseUser = user || null;
+          updateCloudAuthUI(user);
+
+          if (user) {
+            await loadUserDataFromFirestore(user);
+            fetchCloudLeaderboard(false);
+          } else {
+            fetchCloudLeaderboard(false);
+          }
+        });
+      } catch (err) {
+        console.warn('Firebase init note:', err.message || err);
+      }
+    }
+
+    function handleLandingPrimaryCta() {
+      if (state.firebaseUser) {
+        enterAppDirectly();
+      } else {
+        openAuthModal('login');
+      }
+    }
+
+    function handleSidebarLogoutOrLanding() {
+      if (state.firebaseUser) {
+        handleFirebaseSignOut();
+      } else {
+        switchMainMode('landing');
+      }
+    }
+
+    function switchAuthMode(mode) {
+      const loginForm = document.getElementById('authFormLogin');
+      const regForm = document.getElementById('authFormRegister');
+      const forgotForm = document.getElementById('authFormForgot');
+      const tabsWrap = document.getElementById('authModeTabs');
+      const tabLogin = document.getElementById('authTab_login');
+      const tabReg = document.getElementById('authTab_register');
+      const titleEl = document.getElementById('authModalTitle');
+      const subEl = document.getElementById('authModalSub');
+      hideAuthMessage();
+
+      if (loginForm) loginForm.classList.toggle('hidden', mode !== 'login');
+      if (regForm) regForm.classList.toggle('hidden', mode !== 'register');
+      if (forgotForm) forgotForm.classList.toggle('hidden', mode !== 'forgot');
+      if (tabsWrap) tabsWrap.classList.toggle('hidden', mode === 'forgot');
+
+      if (mode === 'login') {
+        if (titleEl) titleEl.textContent = state.lang === 'vi' ? 'ĐĂNG NHẬP CLOUD' : 'CLOUD SIGN IN';
+        if (subEl) subEl.textContent = state.lang === 'vi' ? 'ĐỒNG BỘ XP • LEVEL • STREAK XUYÊN THIẾT BỊ' : 'SYNC XP • LEVEL • STREAK ACROSS DEVICES';
+        if (tabLogin) tabLogin.className = 'py-2 rounded-lg text-xs font-bold bg-brand text-white transition';
+        if (tabReg) tabReg.className = 'py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition';
+      } else if (mode === 'register') {
+        if (titleEl) titleEl.textContent = state.lang === 'vi' ? 'TẠO TÀI KHOẢN MỚI' : 'CREATE ACCOUNT';
+        if (subEl) subEl.textContent = state.lang === 'vi' ? 'LƯU TIẾN ĐỘ TẬP LUYỆN TRỌN ĐỜI TRÊN ĐÁM MÂY' : 'SAVE YOUR PROGRESS FOREVER IN THE CLOUD';
+        if (tabReg) tabReg.className = 'py-2 rounded-lg text-xs font-bold bg-brand text-white transition';
+        if (tabLogin) tabLogin.className = 'py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition';
+      } else {
+        if (titleEl) titleEl.textContent = state.lang === 'vi' ? 'QUÊN MẬT KHẨU' : 'RESET PASSWORD';
+        if (subEl) subEl.textContent = state.lang === 'vi' ? 'GỬI LINK KHÔI PHỤC QUA EMAIL THẬT' : 'SEND REAL RECOVERY LINK VIA EMAIL';
+      }
+    }
+
+    function showAuthMessage(msg, type = 'error') {
+      const box = document.getElementById('authMessageBox');
+      if (!box) return;
+      box.classList.remove('hidden');
+      if (type === 'success') {
+        box.className = 'mb-4 p-3 rounded-xl text-xs font-semibold leading-relaxed bg-emerald-500/15 text-emerald-300 border border-emerald-500/40';
+      } else {
+        box.className = 'mb-4 p-3 rounded-xl text-xs font-semibold leading-relaxed bg-rose-500/15 text-rose-300 border border-rose-500/40';
+      }
+      box.textContent = msg;
+    }
+
+    function hideAuthMessage() {
+      const box = document.getElementById('authMessageBox');
+      if (box) box.classList.add('hidden');
+    }
+
+    function mapFirebaseErrorVi(err) {
+      const code = err?.code || '';
+      if (code === 'auth/email-already-in-use') return 'Email này đã được đăng ký! Hãy chuyển sang tab Đăng Nhập hoặc bấm Quên mật khẩu.';
+      if (code === 'auth/invalid-email') return 'Địa chỉ Email không hợp lệ. Vui lòng kiểm tra lại.';
+      if (code === 'auth/weak-password') return 'Mật khẩu quá yếu! Vui lòng nhập tối thiểu 6 ký tự.';
+      if (code === 'auth/user-not-found' || code === 'auth/wrong-password' || code === 'auth/invalid-credential') {
+        return 'Sai Email hoặc Mật khẩu! Vui lòng kiểm tra lại hoặc bấm Quên mật khẩu.';
+      }
+      if (code === 'auth/too-many-requests') return 'Bạn thử quá nhiều lần. Vui lòng đợi 1 phút rồi thử lại.';
+      if (code === 'auth/network-request-failed') return 'Lỗi kết nối mạng. Vui lòng kiểm tra Internet của bạn.';
+      if (code === 'auth/operation-not-allowed') return 'Email/Password Auth chưa được bật trong Firebase Console (Authentication -> Sign-in method).';
+      return err?.message || 'Đã xảy ra lỗi xác thực. Vui lòng thử lại.';
+    }
+
+    async function handleFirebaseRegister(e) {
+      e.preventDefault();
+      hideAuthMessage();
+      if (!fbAuth || !fbDb) {
+        showAuthMessage('Không kết nối được Firebase SDK. Hãy kiểm tra mạng Internet.');
+        return;
+      }
+
+      const name = document.getElementById('regNameInput').value.trim();
+      const phone = document.getElementById('regPhoneInput').value.trim();
+      const email = document.getElementById('regEmailInput').value.trim();
+      const password = document.getElementById('regPasswordInput').value;
+      const btn = document.getElementById('registerSubmitBtn');
+
+      if (!name || !phone || !email || password.length < 6) {
+        showAuthMessage('Vui lòng điền đầy đủ Họ tên, Số điện thoại, Email và Mật khẩu (≥ 6 ký tự).');
+        return;
+      }
+
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang tạo tài khoản...</span>';
+
+      try {
+        const cred = await fbAuth.createUserWithEmailAndPassword(email, password);
+        const user = cred.user;
+        await user.updateProfile({ displayName: name });
+
+        const cleanHandle = '@' + name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '').slice(0, 14) || '@warrior';
+        state.userProfile.name = name;
+        state.userProfile.phone = phone;
+        state.userProfile.email = email;
+        state.userProfile.username = cleanHandle;
+
+        try {
+          localStorage.setItem('gq_user_name', name);
+          localStorage.setItem('gq_user_phone', phone);
+          localStorage.setItem('gq_user_email', email);
+          localStorage.setItem('gq_user_handle', cleanHandle);
+        } catch (_) {}
+
+        // Save brand-new user profile + stats into Firestore
+        await writeStateToFirestoreNow(user.uid, true);
+
+        closeAuthModal();
+        enterAppDirectly();
+        launchConfetti();
+        showToast(`☁️ Đăng ký thành công! Chào mừng chiến binh ${name}!`);
+      } catch (err) {
+        showAuthMessage(mapFirebaseErrorVi(err));
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = origHtml;
+      }
+    }
+
+    async function handleFirebaseLogin(e) {
+      e.preventDefault();
+      hideAuthMessage();
+      if (!fbAuth) {
+        showAuthMessage('Không kết nối được Firebase SDK. Hãy kiểm tra mạng Internet.');
+        return;
+      }
+
+      const email = document.getElementById('loginEmailInput').value.trim();
+      const password = document.getElementById('loginPasswordInput').value;
+      const btn = document.getElementById('loginSubmitBtn');
+
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang đăng nhập...</span>';
+
+      try {
+        await fbAuth.signInWithEmailAndPassword(email, password);
+        closeAuthModal();
+        enterAppDirectly();
+        showToast('☁️ Đăng nhập thành công! Đã đồng bộ dữ liệu từ đám mây.');
+      } catch (err) {
+        showAuthMessage(mapFirebaseErrorVi(err));
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = origHtml;
+      }
+    }
+
+    async function handleFirebaseForgotPassword(e) {
+      e.preventDefault();
+      hideAuthMessage();
+      if (!fbAuth) {
+        showAuthMessage('Không kết nối được Firebase SDK.');
+        return;
+      }
+      const email = document.getElementById('forgotEmailInput').value.trim();
+      const btn = document.getElementById('forgotSubmitBtn');
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang gửi email...</span>';
+
+      try {
+        await fbAuth.sendPasswordResetEmail(email);
+        showAuthMessage(`✅ Đã gửi link đặt lại mật khẩu tới ${email}! Vui lòng kiểm tra Hộp thư đến (hoặc mục Spam/Thư rác).`, 'success');
+      } catch (err) {
+        showAuthMessage(mapFirebaseErrorVi(err));
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = origHtml;
+      }
+    }
+
+    async function handleFirebaseSignOut() {
+      if (!fbAuth) {
+        switchMainMode('landing');
+        return;
+      }
+      try {
+        await fbAuth.signOut();
+        showToast('👋 Đã đăng xuất khỏi tài khoản Cloud.');
+        switchMainMode('landing');
+      } catch (err) {
+        showToast('Lỗi đăng xuất: ' + (err.message || err));
+      }
+    }
+
+    function updateCloudAuthUI(user) {
+      const sbStatus = document.getElementById('sidebarCloudStatus');
+      const sbAuthBtn = document.getElementById('sidebarAuthBtn');
+      const mobDot = document.getElementById('mobileCloudDot');
+      const profBadge = document.getElementById('profileCloudBadge');
+      const profInfo = document.getElementById('profileCloudInfoText');
+      const profLoginBtn = document.getElementById('profileCloudLoginBtn');
+      const profLogoutBtn = document.getElementById('profileCloudLogoutBtn');
+      const landingBtn = document.getElementById('landingAuthCtaBtn');
+
+      if (user) {
+        if (mobDot) {
+          mobDot.className = 'w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]';
+          mobDot.title = 'Đã đồng bộ Cloud: ' + (user.email || '');
+        }
+        if (sbStatus) {
+          sbStatus.innerHTML = `<span class="truncate flex items-center gap-1.5 text-emerald-400"><i class="fa-solid fa-cloud-check"></i><span class="truncate">${user.email || 'Cloud Synced'}</span></span>`;
+        }
+        if (sbAuthBtn) {
+          sbAuthBtn.innerHTML = `<i class="fa-solid fa-right-from-bracket text-rose-400"></i><span>Đăng Xuất Cloud</span>`;
+        }
+        if (profBadge) {
+          profBadge.textContent = '☁️ ĐÃ ĐỒNG BỘ CLOUD';
+          profBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+        }
+        if (profInfo) {
+          const phonePart = state.userProfile.phone ? ` • SĐT: ${state.userProfile.phone}` : '';
+          profInfo.textContent = `${user.email || ''}${phonePart}`;
+        }
+        if (profLoginBtn) profLoginBtn.classList.add('hidden');
+        if (profLogoutBtn) profLogoutBtn.classList.remove('hidden');
+        if (landingBtn) {
+          landingBtn.innerHTML = `<span>Vào App Ngay</span><i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>`;
+        }
+      } else {
+        if (mobDot) {
+          mobDot.className = 'w-2 h-2 rounded-full bg-slate-500';
+          mobDot.title = 'Chế độ Offline / Demo';
+        }
+        if (sbStatus) {
+          sbStatus.innerHTML = `<span class="truncate flex items-center gap-1.5"><i class="fa-solid fa-cloud text-slate-400"></i><span>Chế độ Offline/Demo</span></span><button onclick="openAuthModal('login')" class="text-brand font-bold hover:underline shrink-0">Đăng nhập</button>`;
+        }
+        if (sbAuthBtn) {
+          sbAuthBtn.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i><span data-i18n="menu_logout">Quay về Landing Page</span>`;
+        }
+        if (profBadge) {
+          profBadge.textContent = 'OFFLINE / DEMO';
+          profBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-600/40 text-slate-300';
+        }
+        if (profInfo) {
+          profInfo.textContent = 'Đăng nhập để đồng bộ XP, Level, Streak & Huy hiệu xuyên thiết bị.';
+        }
+        if (profLoginBtn) profLoginBtn.classList.remove('hidden');
+        if (profLogoutBtn) profLogoutBtn.classList.add('hidden');
+        if (landingBtn) {
+          landingBtn.innerHTML = `<span data-i18n="btn_get_started">Bắt Đầu Ngay</span><i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>`;
+        }
+      }
+    }
+
+    function buildFirestoreUserPayload(uid) {
+      const unlockedBadgeIds = getAchievementsDefinitions().filter(b => b.unlocked).map(b => b.id);
+      return {
+        uid,
+        name: state.userProfile.name,
+        username: state.userProfile.username,
+        phone: state.userProfile.phone || '',
+        email: state.userProfile.email || (state.firebaseUser ? state.firebaseUser.email : ''),
+        avatar: state.userProfile.avatar,
+        coach: state.currentCoach,
+        subscriptionPlan: state.subscriptionPlan,
+        progressMode: state.progressMode,
+        level: state.level,
+        xp: state.xp,
+        nextLevelXp: state.nextLevelXp,
+        totalXp: state.totalXp,
+        streak: state.streak,
+        bestStreak: state.bestStreak,
+        checkedInDateKey: state.checkedInDateKey || null,
+        weeklyXpHistory: state.weeklyXpHistory,
+        unlockedBadges: unlockedBadgeIds,
+        unlockedBadgeCount: unlockedBadgeIds.length,
+        exercises: state.exercises.map(ex => ({ id: ex.id, name_vi: ex.name_vi, name_en: ex.name_en, sets: ex.sets, muscle_vi: ex.muscle_vi, muscle_en: ex.muscle_en, done: !!ex.done, videoUrl: ex.videoUrl || '' })),
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+    }
+
+    async function writeStateToFirestoreNow(uid, isNew = false) {
+      if (!fbDb || !uid) return;
+      try {
+        const payload = buildFirestoreUserPayload(uid);
+        if (isNew) {
+          payload.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        }
+        await fbDb.collection('users').doc(uid).set(payload, { merge: true });
+      } catch (err) {
+        console.warn('Firestore write warning (check Firestore Rules):', err.message || err);
+      }
+    }
+
+    function scheduleFirestoreSync() {
+      if (isHydratingFromCloud || !state.firebaseUser || !fbDb) return;
+      clearTimeout(firestoreSyncTimer);
+      firestoreSyncTimer = setTimeout(async () => {
+        if (!state.firebaseUser) return;
+        await writeStateToFirestoreNow(state.firebaseUser.uid, false);
+        fetchCloudLeaderboard(false);
+      }, 450);
+    }
+
+    async function loadUserDataFromFirestore(user) {
+      if (!fbDb || !user) return;
+      isHydratingFromCloud = true;
+      try {
+        const docRef = fbDb.collection('users').doc(user.uid);
+        const snap = await docRef.get();
+        if (snap.exists) {
+          const d = snap.data();
+          if (d.name) state.userProfile.name = d.name;
+          if (d.username) state.userProfile.username = d.username;
+          if (d.phone !== undefined) state.userProfile.phone = d.phone;
+          state.userProfile.email = d.email || user.email || '';
+          if (d.avatar) state.userProfile.avatar = d.avatar;
+          if (d.coach && coachesData[d.coach]) state.currentCoach = d.coach;
+          if (d.subscriptionPlan && PLAN_CONFIG[d.subscriptionPlan]) state.subscriptionPlan = d.subscriptionPlan;
+          if (d.progressMode) state.progressMode = d.progressMode;
+          if (typeof d.level === 'number') state.level = d.level;
+          if (typeof d.xp === 'number') state.xp = d.xp;
+          if (typeof d.nextLevelXp === 'number') state.nextLevelXp = d.nextLevelXp;
+          if (typeof d.totalXp === 'number') state.totalXp = d.totalXp;
+          if (typeof d.streak === 'number') state.streak = d.streak;
+          if (typeof d.bestStreak === 'number') state.bestStreak = d.bestStreak;
+          state.checkedInDateKey = d.checkedInDateKey || null;
+          state.checkedInToday = state.checkedInDateKey === getRealTimeTodayInfo().dateKey;
+          if (Array.isArray(d.weeklyXpHistory) && d.weeklyXpHistory.length === 7) {
+            state.weeklyXpHistory = d.weeklyXpHistory;
+          }
+          if (Array.isArray(d.exercises) && d.exercises.length > 0) {
+            state.exercises = d.exercises.map(item => {
+              const cat = EXERCISE_CATALOG.find(c => c.id === item.id || c.name_vi === item.name_vi);
+              const merged = { ...(cat || {}), ...item };
+              merged.videoUrl = resolveExerciseMp4(merged);
+              merged.frames = resolveExerciseFrames(merged);
+              return merged;
+            });
+          }
+
+          // Cache locally for instant load
+          try {
+            localStorage.setItem('gq_user_name', state.userProfile.name);
+            localStorage.setItem('gq_user_handle', state.userProfile.username);
+            localStorage.setItem('gq_user_phone', state.userProfile.phone || '');
+            localStorage.setItem('gq_user_email', state.userProfile.email || '');
+            localStorage.setItem('gq_user_avatar', state.userProfile.avatar);
+            localStorage.setItem('gq_sub_plan', state.subscriptionPlan);
+          } catch (_) {}
+
+          syncUserProfileAcrossDOM();
+          updateCloudAuthUI(user);
+          renderRealTimeCalendarAndStats();
+          applySubscriptionPlan(state.subscriptionPlan, false);
+          renderExercises();
+          renderLeaderboard(state.activeLeaderboardPeriod || 'weekly');
+          selectCoachGlobal(state.currentCoach, true);
+        } else {
+          // First login without Firestore doc -> upload current state
+          state.userProfile.email = user.email || '';
+          if (user.displayName) state.userProfile.name = user.displayName;
+          await writeStateToFirestoreNow(user.uid, true);
+          syncUserProfileAcrossDOM();
+          updateCloudAuthUI(user);
+        }
+      } catch (err) {
+        console.warn('Firestore load warning:', err.message || err);
+      } finally {
+        isHydratingFromCloud = false;
+      }
+    }
+
+    async function fetchCloudLeaderboard(notify = false) {
+      if (!fbDb) return;
+      try {
+        const snap = await fbDb.collection('users').orderBy('totalXp', 'desc').limit(30).get();
+        const users = [];
+        snap.forEach(doc => {
+          const data = doc.data();
+          if (data) users.push({ ...data, uid: doc.id });
+        });
+        state.cloudLeaderboardUsers = users;
+        renderLeaderboard(state.activeLeaderboardPeriod || 'weekly');
+        if (notify) {
+          showToast(`☁️ Đã đồng bộ Bảng Xếp Hạng (${users.length} thành viên Cloud)!`);
+        }
+      } catch (err) {
+        console.warn('Cloud leaderboard fetch skipped:', err.message || err);
+        if (notify) {
+          showToast('⚠️ Chưa thể đọc danh sách Cloud (Kiểm tra Firestore Rules).');
+        }
+      }
+    }
+
+    // Keep Check-in button label responsive on viewport resize
+    window.addEventListener('resize', () => {
+      renderRealTimeCalendarAndStats();
+    });
+
   </script>
 </body>
 </html>
