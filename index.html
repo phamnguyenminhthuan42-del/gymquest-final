@@ -228,7 +228,7 @@
         <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300">
           <a href="#features" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_features">TÍNH NĂNG</a>
           <a href="#coaches" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_coaches">AI COACH</a>
-          <a href="#pricing" class="hover:text-brand transition text-brand font-bold flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-crown text-amber-400"></i><span>BẢNG GIÁ GÓI TẬP</span></a>
+          <a href="#pricing" class="hover:text-brand transition text-brand font-bold flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-crown text-amber-400"></i><span data-i18n="nav_pricing">BẢNG GIÁ GÓI TẬP</span></a>
           <a href="#howitworks" class="hover:text-brand transition whitespace-nowrap" data-i18n="nav_how">CÁCH HOẠT ĐỘNG</a>
         </nav>
 
@@ -285,7 +285,7 @@
             </button>
             <a href="#pricing" class="px-3.5 sm:px-6 py-3 sm:py-4 rounded-xl gq-card hover:border-amber-400 font-bold text-xs sm:text-base transition flex items-center justify-center gap-1.5 sm:gap-2 text-amber-400 whitespace-nowrap">
               <i class="fa-solid fa-crown"></i>
-              <span>Bảng Giá 3 Gói</span>
+              <span data-i18n="hero_cta_pricing">Bảng Giá 3 Gói</span>
             </a>
             <button onclick="openAuthModal()" class="px-3.5 sm:px-6 py-3 sm:py-4 rounded-xl gq-card hover:border-brand font-bold text-xs sm:text-base transition flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
               <i class="fa-regular fa-user text-brand"></i>
@@ -313,21 +313,21 @@
         <!-- Right Column: Interactive Hero Preview Card -->
         <div class="lg:col-span-5">
           <div class="gq-card rounded-2xl p-6 relative overflow-hidden border-t-2 border-t-brand animate-float">
-            <div class="flex items-center justify-between mb-5">
-              <div class="flex items-center gap-3">
-                <div id="heroUserAvatar" class="w-12 h-12 rounded-xl bg-brand/20 border border-brand/40 flex items-center justify-center text-2xl">
+            <div class="flex items-center justify-between gap-2 mb-5">
+              <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                <div id="heroUserAvatar" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-brand/20 border border-brand/40 flex items-center justify-center text-2xl shrink-0">
                   🦊
                 </div>
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span id="heroUserName" class="font-bold text-base">Alex Rivera</span>
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-brand text-white">LVL 7</span>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span id="heroUserName" class="font-bold text-sm sm:text-base truncate max-w-[140px] sm:max-w-none">Alex Rivera</span>
+                    <span class="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded bg-brand text-white whitespace-nowrap shrink-0">LVL 7</span>
                   </div>
-                  <div class="text-xs text-slate-500 dark:text-slate-300 font-medium">Spartan Warrior • 4,200 / 6,000 XP</div>
+                  <div class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-300 font-medium truncate">Spartan Warrior • 4,200 / 6,000 XP</div>
                 </div>
               </div>
-              <div class="px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 font-display font-bold text-sm flex items-center gap-1.5">
-                <span class="flame-icon">🔥</span> 23 <span data-i18n="days">ngày</span>
+              <div class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 font-display font-bold text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap shrink-0">
+                <span class="flame-icon">🔥</span><span>23</span><span data-i18n="days">ngày</span>
               </div>
             </div>
 
@@ -524,24 +524,24 @@
       <div class="text-center max-w-3xl mx-auto mb-10">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-xs font-bold uppercase tracking-widest text-amber-400 mb-3">
           <i class="fa-solid fa-gem"></i>
-          <span>MÔ HÌNH ĐĂNG KÝ LINH HOẠT • SAAS PRICING</span>
+          <span data-i18n="pr_badge">MÔ HÌNH ĐĂNG KÝ LINH HOẠT • SAAS PRICING</span>
         </div>
         <h2 class="font-display font-bold text-3xl sm:text-5xl uppercase tracking-tight">
-          <span>CHỌN GÓI </span>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand via-amber-400 to-brand">NÂNG CẤP SỨC MẠNH</span>
+          <span data-i18n="pr_title_1">CHỌN GÓI </span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand via-amber-400 to-brand" data-i18n="pr_title_2">NÂNG CẤP SỨC MẠNH</span>
         </h2>
-        <p class="mt-3 text-slate-600 dark:text-slate-300 text-base">
+        <p class="mt-3 text-slate-600 dark:text-slate-300 text-base" data-i18n="pr_sub">
           Đầu tư cho kỷ luật bản thân. Bạn có thể chuyển đổi qua lại giữa 3 gói ngay lập tức để trải nghiệm phân quyền tính năng.
         </p>
 
         <!-- Monthly / Yearly Billing Toggle -->
         <div class="mt-7 inline-flex items-center gap-3 p-1.5 rounded-2xl gq-card border border-slate-200 dark:border-white/15">
-          <button type="button" onclick="toggleBillingCycle('monthly')" id="billBtn_monthly" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-white transition">
+          <button type="button" onclick="toggleBillingCycle('monthly')" id="billBtn_monthly" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-white transition" data-i18n="pr_monthly">
             Thanh Toán Tháng
           </button>
           <button type="button" onclick="toggleBillingCycle('yearly')" id="billBtn_yearly" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-white transition flex items-center gap-2">
-            <span>Theo Năm</span>
-            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-extrabold">-20% TIẾT KIỆM</span>
+            <span data-i18n="pr_yearly">Theo Năm</span>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-extrabold" data-i18n="pr_save">-20% TIẾT KIỆM</span>
           </button>
         </div>
       </div>
@@ -554,26 +554,26 @@
             <div class="flex items-center justify-between mb-4">
               <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-slate-400">STARTER TIER</span>
-                <h3 class="font-display font-bold text-2xl uppercase mt-0.5">GÓI BASIC</h3>
+                <h3 class="font-display font-bold text-2xl uppercase mt-0.5" data-i18n="pr_basic_name">GÓI BASIC</h3>
               </div>
               <div class="w-12 h-12 rounded-2xl gq-elevated flex items-center justify-center text-2xl">🌱</div>
             </div>
-            <p class="text-xs text-slate-400 mb-5">Dành cho người mới làm quen với thói quen tập luyện cơ bản.</p>
+            <p class="text-xs text-slate-400 mb-5" data-i18n="pr_basic_desc">Dành cho người mới làm quen với thói quen tập luyện cơ bản.</p>
             <div class="mb-6 pb-6 border-b border-slate-200 dark:border-white/10">
               <div class="flex items-baseline gap-1">
                 <span class="font-display font-bold text-4xl">0đ</span>
-                <span class="text-xs text-slate-400 font-semibold">/ vĩnh viễn</span>
+                <span class="text-xs text-slate-400 font-semibold" data-i18n="pr_forever">/ vĩnh viễn</span>
               </div>
-              <div class="text-[11px] text-emerald-400 font-semibold mt-1">Miễn phí 100% cho người bắt đầu</div>
+              <div class="text-[11px] text-emerald-400 font-semibold mt-1" data-i18n="pr_basic_note">Miễn phí 100% cho người bắt đầu</div>
             </div>
 
             <ul class="space-y-3 text-xs sm:text-sm mb-8">
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>Truy cập <strong>5 bài tập mặc định</strong> mỗi ngày</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>Lưu chuỗi Điểm danh (Streak) 7 ngày gần nhất</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>Xem hướng dẫn kỹ thuật & Video cơ bản</span></li>
-              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span>Kho 32+ bài tập đa dạng & Tự tạo lịch tập</span></li>
-              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span>AI Coach 24/7 & Mô phỏng cơ sinh học 2D</span></li>
-              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span>Nhân hệ số +50% XP VIP mỗi buổi tập</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span data-i18n="pr_b_f1">Truy cập 5 bài tập mặc định mỗi ngày</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span data-i18n="pr_b_f2">Lưu chuỗi Điểm danh (Streak) 7 ngày gần nhất</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span data-i18n="pr_b_f3">Xem hướng dẫn kỹ thuật & Video cơ bản</span></li>
+              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span data-i18n="pr_b_f4">Kho 34 bài tập đa dạng & Tự tạo lịch tập</span></li>
+              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span data-i18n="pr_b_f5">AI Coach 24/7 & Mô phỏng cơ sinh học 2D</span></li>
+              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span data-i18n="pr_b_f6">Nhân hệ số +50% XP VIP mỗi buổi tập</span></li>
             </ul>
           </div>
 
@@ -592,11 +592,11 @@
             <div class="flex items-center justify-between mb-4 mt-2">
               <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-brand">SPARTAN TIER</span>
-                <h3 class="font-display font-bold text-2xl uppercase mt-0.5 text-brand">GÓI PRO</h3>
+                <h3 class="font-display font-bold text-2xl uppercase mt-0.5 text-brand" data-i18n="pr_pro_name">GÓI PRO</h3>
               </div>
               <div class="w-12 h-12 rounded-2xl bg-brand/15 border border-brand/40 text-brand flex items-center justify-center text-2xl">⚡</div>
             </div>
-            <p class="text-xs text-slate-300 mb-5">Dành cho Gymer nghiêm túc muốn tự thiết kế lịch tập & theo dõi dữ liệu sâu.</p>
+            <p class="text-xs text-slate-300 mb-5" data-i18n="pr_pro_desc">Dành cho Gymer nghiêm túc muốn tự thiết kế lịch tập & theo dõi dữ liệu sâu.</p>
             <div class="mb-6 pb-6 border-b border-slate-200 dark:border-white/10">
               <div class="flex items-baseline gap-1.5">
                 <span id="priceText_pro" class="font-display font-bold text-4xl text-brand">99.000đ</span>
@@ -606,12 +606,12 @@
             </div>
 
             <ul class="space-y-3 text-xs sm:text-sm mb-8">
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span>Mở khóa toàn bộ <strong>Kho 32+ Bài Tập</strong> (6 nhóm cơ)</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span><strong>Tự do Thêm / Xóa</strong> & tùy chỉnh lịch tập không giới hạn</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span>Trình phát <strong>Video/GIF Động Tác Lặp & MP4</strong> tốc độ 0.5x–1.5x</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span>Biểu đồ phân tích XP & Cân bằng nhóm cơ chuyên sâu</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span>Tham gia Thách đấu Solo 1v1 cùng bạn bè</span></li>
-              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span>Trợ lý AI Coach 24/7 & +50% XP VIP</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span data-i18n="pr_p_f1">Mở khóa toàn bộ Kho 34 Bài Tập (6 nhóm cơ)</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span data-i18n="pr_p_f2">Tự do Thêm / Xóa & tùy chỉnh lịch tập không giới hạn</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span data-i18n="pr_p_f3">Trình phát Video MP4 & 2 Pha tốc độ 0.5x–1.5x</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span data-i18n="pr_p_f4">Biểu đồ phân tích XP & Cân bằng nhóm cơ chuyên sâu</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand mt-1"></i><span data-i18n="pr_p_f5">Tham gia Thách đấu Solo 1v1 cùng bạn bè</span></li>
+              <li class="flex items-start gap-2.5 text-slate-500 line-through"><i class="fa-solid fa-lock text-slate-500 mt-1"></i><span data-i18n="pr_p_f6">Trợ lý AI Coach 24/7 & +50% XP VIP</span></li>
             </ul>
           </div>
 
@@ -631,11 +631,11 @@
             <div class="flex items-center justify-between mb-4 mt-2">
               <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">OLYMPIAN VIP TIER</span>
-                <h3 class="font-display font-bold text-2xl uppercase mt-0.5 text-amber-400">GÓI ELITE VIP</h3>
+                <h3 class="font-display font-bold text-2xl uppercase mt-0.5 text-amber-400" data-i18n="pr_elite_name">GÓI ELITE VIP</h3>
               </div>
               <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-400/50 text-amber-400 flex items-center justify-center text-2xl">👑</div>
             </div>
-            <p class="text-xs text-slate-300 mb-5">Trải nghiệm toàn diện thay thế PT cá nhân với AI Coach 24/7 & đặc quyền VIP.</p>
+            <p class="text-xs text-slate-300 mb-5" data-i18n="pr_elite_desc">Trải nghiệm toàn diện thay thế PT cá nhân với AI Coach 24/7 & đặc quyền VIP.</p>
             <div class="mb-6 pb-6 border-b border-slate-200 dark:border-white/10">
               <div class="flex items-baseline gap-1.5">
                 <span id="priceText_elite" class="font-display font-bold text-4xl text-amber-400">199.000đ</span>
@@ -645,12 +645,12 @@
             </div>
 
             <ul class="space-y-3 text-xs sm:text-sm mb-8">
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span><strong>Bao gồm toàn bộ quyền lợi của Gói PRO</strong></span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span>Mở khóa <strong>3 Huấn Luyện Viên AI Coach 24/7</strong> (Tư vấn thực đơn & lịch tập)</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span>Mở khóa <strong>Mô Phỏng Cơ Sinh Học 2D Vector</strong> chuyên sâu</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span><strong>Đặc quyền +50% Bonus XP</strong> cho mọi bài tập & buổi tập</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span>Huy hiệu <strong>Vương Miện VIP Vàng</strong> trên Bảng Xếp Hạng & Hồ Sơ</span></li>
-              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span>Lá chắn bảo vệ chuỗi Streak tự động (Streak Freeze)</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f1">Bao gồm toàn bộ quyền lợi của Gói PRO</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f2">Mở khóa 3 Huấn Luyện Viên AI Coach 24/7 (Thực đơn & lịch tập)</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f3">Mở khóa Mô Phỏng Cơ Sinh Học 2D Vector chuyên sâu</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f4">Đặc quyền +50% Bonus XP cho mọi bài tập & buổi tập</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f5">Huy hiệu Vương Miện VIP Vàng trên Bảng Xếp Hạng & Hồ Sơ</span></li>
+              <li class="flex items-start gap-2.5"><i class="fa-solid fa-crown text-amber-400 mt-1"></i><span data-i18n="pr_e_f6">Lá chắn bảo vệ chuỗi Streak tự động (Streak Freeze)</span></li>
             </ul>
           </div>
 
@@ -814,7 +814,7 @@
           <button onclick="openPricingModal()" class="nav-tab-btn flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-amber-400 hover:bg-amber-500/10 transition whitespace-nowrap">
             <span class="flex items-center gap-3">
               <i class="fa-solid fa-crown w-5 text-center text-amber-400"></i>
-              <span>Gói Đăng Ký (3 Tiers)</span>
+              <span data-i18n="menu_plans">Gói Đăng Ký (3 Gói)</span>
             </span>
             <span id="navPlanMiniPill" class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400">PRO</span>
           </button>
@@ -834,7 +834,7 @@
           </div>
           <button onclick="openPricingModal()" class="w-full py-1.5 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-bold text-xs shadow-md shadow-brand/20 transition flex items-center justify-center gap-1.5">
             <i class="fa-solid fa-bolt"></i>
-            <span>Nâng Cấp / Đổi Gói</span>
+            <span data-i18n="btn_upgrade_plan">Nâng Cấp / Đổi Gói</span>
           </button>
         </div>
 
@@ -1366,15 +1366,15 @@
         <!-- Top Counters (Compact Mobile-First 3-Column Grid) -->
         <div class="grid grid-cols-3 gap-2 sm:gap-4">
           <div class="gq-card rounded-2xl p-3 sm:p-5">
-            <div class="text-[10px] sm:text-xs font-bold text-brand uppercase mb-1 leading-tight">⚡ ĐANG THAM GIA</div>
+            <div class="text-[10px] sm:text-xs font-bold text-brand uppercase mb-1 leading-tight" data-i18n="chal_stat_active">⚡ ĐANG THAM GIA</div>
             <div id="activeChallengesCount" class="font-display font-bold text-2xl sm:text-3xl">3</div>
           </div>
           <div class="gq-card rounded-2xl p-3 sm:p-5">
-            <div class="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase mb-1 leading-tight">✓ HOÀN THÀNH</div>
+            <div class="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase mb-1 leading-tight" data-i18n="chal_stat_done">✓ HOÀN THÀNH</div>
             <div id="completedChallengesCount" class="font-display font-bold text-2xl sm:text-3xl">1</div>
           </div>
           <div class="gq-card rounded-2xl p-3 sm:p-5">
-            <div class="text-[10px] sm:text-xs font-bold text-amber-400 uppercase mb-1 leading-tight">🏅 HUY HIỆU</div>
+            <div class="text-[10px] sm:text-xs font-bold text-amber-400 uppercase mb-1 leading-tight" data-i18n="chal_stat_badges">🏅 HUY HIỆU</div>
             <div id="challengesBadgesCount" class="font-display font-bold text-2xl sm:text-3xl">3</div>
           </div>
         </div>
@@ -1402,7 +1402,7 @@
           </div>
           <button onclick="fetchCloudLeaderboard(true)" class="px-3.5 py-2 rounded-xl gq-card hover:border-brand text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0">
             <i class="fa-solid fa-cloud-arrow-down text-brand"></i>
-            <span>Đồng bộ Cloud</span>
+            <span data-i18n="btn_cloud_sync">Đồng bộ Cloud</span>
           </button>
         </div>
 
@@ -1611,7 +1611,7 @@
               </div>
               <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
-                  <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400">TÀI KHOẢN ĐÁM MÂY (FIREBASE)</span>
+                  <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400" data-i18n="prof_cloud_title">TÀI KHOẢN ĐÁM MÂY (FIREBASE)</span>
                   <span id="profileCloudBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-600/40 text-slate-300">OFFLINE / DEMO</span>
                 </div>
                 <div id="profileCloudInfoText" class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 truncate">
@@ -1623,11 +1623,11 @@
             <div class="flex flex-wrap items-center gap-2">
               <button id="profileCloudLoginBtn" onclick="openAuthModal('login')" class="px-4 py-2 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs transition whitespace-nowrap flex items-center gap-1.5">
                 <i class="fa-solid fa-right-to-bracket"></i>
-                <span>Đăng Nhập / Đăng Ký</span>
+                <span data-i18n="hero_cta_login">Đăng Nhập / Đăng Ký</span>
               </button>
               <button id="profileCloudLogoutBtn" onclick="handleFirebaseSignOut()" class="hidden px-4 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/40 font-bold text-xs transition whitespace-nowrap flex items-center gap-1.5">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Đăng Xuất</span>
+                <span data-i18n="btn_logout">Đăng Xuất</span>
               </button>
             </div>
           </div>
@@ -1644,7 +1644,7 @@
             </button>
             <button type="button" onclick="switchMainMode('landing')" class="py-2 px-2 rounded-xl gq-elevated text-[11px] font-bold text-slate-300 transition flex items-center justify-center gap-1 whitespace-nowrap">
               <i class="fa-solid fa-house text-brand"></i>
-              <span>Trang Chủ</span>
+              <span data-i18n="menu_home">Trang Chủ</span>
             </button>
           </div>
         </div>
@@ -1658,7 +1658,7 @@
               </div>
               <div>
                 <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold uppercase tracking-widest text-slate-400">GÓI ĐĂNG KÝ CỦA BẠN:</span>
+                  <span class="text-xs font-bold uppercase tracking-widest text-slate-400" data-i18n="prof_sub_label">GÓI ĐĂNG KÝ CỦA BẠN:</span>
                   <span id="profileActivePlanBadge" class="px-2.5 py-0.5 rounded-full bg-brand text-white text-xs font-extrabold uppercase">GÓI PRO</span>
                 </div>
                 <div id="profileActivePlanDetails" class="text-sm font-semibold text-slate-200 mt-1">
@@ -1668,7 +1668,7 @@
             </div>
             <button onclick="openPricingModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand to-amber-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-2">
               <i class="fa-solid fa-layer-group"></i>
-              <span>Đổi Gói Đăng Ký (3 Gói)</span>
+              <span data-i18n="prof_change_plan_btn">Đổi Gói Đăng Ký (3 Gói)</span>
             </button>
           </div>
         </div>
@@ -1681,7 +1681,7 @@
                 <i class="fa-solid fa-medal text-amber-400"></i>
                 <span data-i18n="achievements_title">BỘ SƯU TẬP HUY HIỆU (ACHIEVEMENTS)</span>
               </h2>
-              <p class="text-xs text-slate-400 mt-0.5">Tự động mở khóa khi bạn Điểm danh, Tập luyện tăng XP, Lên Level hoặc Thách đấu bạn bè.</p>
+              <p class="text-xs text-slate-400 mt-0.5" data-i18n="ach_auto_sub">Tự động mở khóa khi bạn Điểm danh, Tập luyện tăng XP, Lên Level hoặc Thách đấu bạn bè.</p>
             </div>
             <span id="achievementsUnlockedBadge" class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-brand/15 text-brand border border-brand/30">0 / 12 Đã Mở Khóa</span>
           </div>
@@ -1840,29 +1840,29 @@
 
       <!-- Clean 2-Tab Media Switcher: Real-Athlete MP4 Video Loop vs 2D Biomechanics -->
       <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div class="inline-flex p-1 rounded-xl gq-elevated">
-          <button type="button" onclick="switchFormMediaTab('video')" id="formTabBtn_video" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand text-white transition flex items-center gap-1.5">
+        <div class="inline-flex p-1 rounded-xl gq-elevated max-w-full">
+          <button type="button" onclick="switchFormMediaTab('video')" id="formTabBtn_video" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-brand text-white transition flex items-center gap-1.5 whitespace-nowrap">
             <i class="fa-solid fa-film"></i>
-            <span data-i18n="tab_live_video">🎬 Video Động Tác MP4 (Loop)</span>
+            <span data-i18n="tab_live_video">Video MP4</span>
           </button>
-          <button type="button" onclick="switchFormMediaTab('svg')" id="formTabBtn_svg" class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition flex items-center gap-1.5">
+          <button type="button" onclick="switchFormMediaTab('svg')" id="formTabBtn_svg" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-slate-400 hover:text-brand transition flex items-center gap-1.5 whitespace-nowrap">
             <i class="fa-solid fa-person-running"></i>
-            <span data-i18n="tab_svg_sim">🏃 Mô Phỏng Cơ Học 2D</span>
+            <span data-i18n="tab_svg_sim">Mô Phỏng 2D</span>
             <span id="svgVipLockBadge" class="hidden text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-extrabold">🔒 VIP</span>
           </button>
         </div>
 
-        <span class="text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg gq-elevated text-amber-400" id="formModalSets">4 sets × 8-10 reps</span>
+        <span class="text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg gq-elevated text-amber-400 whitespace-nowrap" id="formModalSets">4 sets × 8-10 reps</span>
       </div>
 
-      <!-- TOP HALF: FULL-WIDTH CLOUDINARY MP4 SEAMLESS LOOP PLAYER (MUSCLEWIKI STYLE) & 2D BIOMECHANICS -->
-      <div class="h-64 sm:h-80 rounded-2xl gq-elevated flex flex-col items-center justify-center relative overflow-hidden mb-2 border border-brand/30 bg-slate-950 shadow-inner">
+      <!-- TOP HALF: CLEAN FULL-WIDTH CLOUDINARY MP4 PLAYER (ZERO OVERLAPPING CONTROLS) -->
+      <div class="h-56 sm:h-72 rounded-2xl gq-elevated flex flex-col items-center justify-center relative overflow-hidden mb-2.5 border border-brand/30 bg-slate-950 shadow-inner">
         <!-- View 1: Full-Screen Native HTML5 MP4 Seamless Loop Player -->
         <div id="formMediaContainer_video" class="w-full h-full relative flex items-center justify-center select-none overflow-hidden bg-black">
           <!-- HTML5 Direct Auto-Looping Video Player (Muted, Playsinline, Seamless Loop, q_auto,f_auto) -->
           <video id="formModalVideoPlayer" class="w-full h-full object-contain bg-black" autoplay loop muted playsinline></video>
 
-          <!-- Fallback Real-Athlete Motion Stage (Only shown if offline or custom non-video) -->
+          <!-- Fallback Real-Athlete Motion Stage (Only shown when user switches to 2-Phase mode or offline) -->
           <div id="realAthleteFrameStage" class="hidden w-full h-full relative flex items-center justify-center bg-slate-950 overflow-hidden">
             <img id="athleteFrame0" class="w-full h-full object-contain transition-all duration-300 ease-in-out opacity-100 scale-100" alt="Eccentric Phase" referrerpolicy="no-referrer" />
             <img id="athleteFrame1" class="w-full h-full object-contain transition-all duration-300 ease-in-out opacity-0 scale-[1.01] absolute inset-0 m-auto" alt="Concentric Phase" referrerpolicy="no-referrer" />
@@ -1871,41 +1871,15 @@
           <!-- Optional GIF Player if custom .gif URL is provided -->
           <img id="formModalGifPlayer" class="hidden w-full h-full object-contain p-2" alt="Exercise Form Demonstration" referrerpolicy="no-referrer" />
 
-          <!-- Top-Left Real Movement Status Badge + Source Switcher -->
-          <div class="absolute top-3 left-3 flex items-center gap-1.5 z-20">
-            <div class="text-[10px] font-bold px-2.5 py-1 rounded-md bg-black/80 text-emerald-400 backdrop-blur-sm border border-emerald-500/30 flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span id="formVideoStatusBadge">HD MP4 LOOP • 60FPS</span>
+          <!-- Minimal Top-Left Status Badge Only -->
+          <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-20 pointer-events-none">
+            <div class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-black/75 text-emerald-400 backdrop-blur-sm border border-emerald-500/30 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span id="formVideoStatusBadge">HD MP4 LOOP</span>
             </div>
-            <button type="button" onclick="togglePrimaryVideoSource()" id="switchSourceModeBtn" class="text-[10px] font-bold px-2.5 py-1 rounded-md bg-white/15 hover:bg-brand text-white backdrop-blur-sm border border-white/15 shadow transition flex items-center gap-1" title="Chuyển đổi giữa Video MP4 mượt mà và Ảnh Phân Tích 2 Pha">
-              <i class="fa-solid fa-camera-rotate"></i>
-              <span id="switchSourceModeText">Chế độ Khung Hình</span>
-            </button>
-          </div>
-
-          <!-- Top-Right Pause/Play & Speed Controls (0.5x / 1.0x / 1.5x) -->
-          <div class="absolute top-3 right-3 flex items-center gap-1.5 z-20">
-            <span id="athletePhaseBadge" class="hidden text-[10px] font-extrabold px-2.5 py-1 rounded-md bg-brand/90 text-white uppercase tracking-wider shadow">
+            <span id="athletePhaseBadge" class="hidden text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-brand/90 text-white uppercase tracking-wider shadow">
               PHA 1: HẠ TẠ
             </span>
-            <button type="button" onclick="toggleAthletePlayPause()" id="athletePlayPauseBtn" class="px-2.5 py-1 rounded-md bg-black/80 text-white border border-white/15 hover:border-brand transition flex items-center gap-1 text-[10px] font-bold" title="Tạm dừng / Phát tiếp">
-              <i id="athletePlayPauseIcon" class="fa-solid fa-pause"></i>
-              <span id="athletePlayPauseLabel">Tạm dừng</span>
-            </button>
-            <button type="button" onclick="setVideoPlaybackSpeed(0.5)" id="speedBtn_05" class="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-black/80 text-slate-300 border border-white/15 hover:border-brand transition" title="Chậm 0.5x để soi kỹ thuật">
-              0.5x
-            </button>
-            <button type="button" onclick="setVideoPlaybackSpeed(1.0)" id="speedBtn_10" class="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-brand text-white border border-brand transition" title="Tốc độ chuẩn 1.0x">
-              1.0x
-            </button>
-            <button type="button" onclick="setVideoPlaybackSpeed(1.5)" id="speedBtn_15" class="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-black/80 text-slate-300 border border-white/15 hover:border-brand transition" title="Tốc độ nhanh 1.5x">
-              1.5x
-            </button>
-          </div>
-
-          <!-- Bottom Breathing Bar -->
-          <div class="absolute bottom-2.5 inset-x-3 px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-sm text-[11px] text-emerald-300 font-semibold text-center border border-white/10 z-20" id="formModalBreathing">
-            💨 Hít sâu khi hạ tạ (2 giây) • Thở mạnh ra khi phát lực đẩy/kéo (1 giây)
           </div>
         </div>
 
@@ -1915,8 +1889,33 @@
             <i class="fa-solid fa-vector-square mr-1"></i> 2D Biomechanics
           </div>
           <div id="dynamicBiomechSvgWrapper" class="w-40 h-40 flex items-center justify-center"></div>
-          <div class="text-xs text-emerald-400 font-semibold mt-1" data-i18n="svg_tempo_note">Nhịp độ chuẩn (Tempo): 2 giây hạ - 1 giây giữ đỉnh - 1 giây phát lực</div>
+          <div class="text-xs text-emerald-400 font-semibold mt-1 text-center" data-i18n="svg_tempo_note">Nhịp độ chuẩn (Tempo): 2 giây hạ - 1 giây giữ đỉnh - 1 giây phát lực</div>
         </div>
+      </div>
+
+      <!-- DEDICATED VIDEO CONTROL TOOLBAR (BELOW VIDEO — NEVER OVERLAPS ON MOBILE) -->
+      <div id="formVideoControlsBar" class="flex flex-wrap items-center justify-between gap-2 p-2 rounded-xl gq-elevated mb-2.5 border border-slate-200/70 dark:border-white/10">
+        <div class="flex items-center gap-1.5">
+          <button type="button" onclick="toggleAthletePlayPause()" id="athletePlayPauseBtn" class="px-2.5 py-1.5 rounded-lg gq-card hover:border-brand transition flex items-center gap-1.5 text-[11px] font-bold whitespace-nowrap" title="Tạm dừng / Phát tiếp">
+            <i id="athletePlayPauseIcon" class="fa-solid fa-pause text-brand"></i>
+            <span id="athletePlayPauseLabel">Tạm dừng</span>
+          </button>
+          <button type="button" onclick="togglePrimaryVideoSource()" id="switchSourceModeBtn" class="px-2.5 py-1.5 rounded-lg gq-card hover:border-brand transition flex items-center gap-1.5 text-[11px] font-bold whitespace-nowrap" title="Chuyển đổi giữa Video MP4 mượt mà và Ảnh Phân Tích 2 Pha">
+            <i class="fa-solid fa-camera-rotate text-amber-400"></i>
+            <span id="switchSourceModeText">Chế độ 2 Pha</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <button type="button" onclick="setVideoPlaybackSpeed(0.5)" id="speedBtn_05" class="text-[11px] font-mono font-bold px-2 py-1 rounded-lg gq-card text-slate-400 hover:border-brand transition">0.5x</button>
+          <button type="button" onclick="setVideoPlaybackSpeed(1.0)" id="speedBtn_10" class="text-[11px] font-mono font-bold px-2 py-1 rounded-lg bg-brand text-white transition">1.0x</button>
+          <button type="button" onclick="setVideoPlaybackSpeed(1.5)" id="speedBtn_15" class="text-[11px] font-mono font-bold px-2 py-1 rounded-lg gq-card text-slate-400 hover:border-brand transition">1.5x</button>
+        </div>
+      </div>
+
+      <!-- Clean Breathing Cue Strip -->
+      <div class="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-[11px] sm:text-xs text-emerald-500 dark:text-emerald-300 font-semibold text-center mb-2.5" id="formModalBreathing">
+        💨 Hít sâu khi hạ tạ (2 giây) • Thở mạnh ra khi phát lực đẩy/kéo (1 giây)
       </div>
 
       <!-- SUBTLE ACADEMIC SOURCE ATTRIBUTION (MUSCLEWIKI CREDIT) -->
@@ -1969,7 +1968,7 @@
         <div class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 font-mono text-lg font-bold text-amber-400">
           ⏱️ <span id="focusElapsedTimer">00:00</span>
         </div>
-        <button onclick="closeFocusWorkoutMode()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-rose-500/20 hover:text-rose-300 text-xs font-bold transition">
+        <button onclick="closeFocusWorkoutMode()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-rose-500/20 hover:text-rose-300 text-xs font-bold transition" data-i18n="focus_exit">
           Thoát Focus Mode
         </button>
       </div>
@@ -1980,17 +1979,17 @@
       <!-- Left: Exercise Selector & Rest Timer -->
       <div class="md:col-span-5 space-y-4">
         <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-          <div class="text-xs font-bold text-brand uppercase mb-1">ĐANG TẬP BÀI</div>
+          <div class="text-xs font-bold text-brand uppercase mb-1" data-i18n="focus_now_lifting">ĐANG TẬP BÀI</div>
           <h2 id="focusCurrentExTitle" class="font-display font-bold text-3xl uppercase mb-2">1. Bench Press</h2>
           <p id="focusCurrentExSub" class="text-xs text-slate-300 mb-4">4 hiệp × 8-10 lần • Nghỉ 60 giây giữa các hiệp</p>
 
           <!-- Rest Countdown Box -->
           <div class="p-4 rounded-xl bg-obsidian-950 border border-white/10">
-            <div class="text-xs text-slate-400 uppercase font-bold mb-1">ĐỒNG HỒ NGHỈ GIỮA HIỆP</div>
+            <div class="text-xs text-slate-400 uppercase font-bold mb-1" data-i18n="focus_rest_title">ĐỒNG HỒ NGHỈ GIỮA HIỆP</div>
             <div id="focusRestTimerDisplay" class="font-mono font-bold text-4xl text-emerald-400 my-1">01:00</div>
             <div class="flex justify-center gap-2 mt-2">
-              <button onclick="startRestCountdown(60)" class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30">Đếm ngược 60s</button>
-              <button onclick="startRestCountdown(0)" class="px-3 py-1 rounded-lg bg-white/10 text-xs font-bold hover:bg-white/20">Bỏ qua nghỉ</button>
+              <button onclick="startRestCountdown(60)" class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30" data-i18n="focus_rest_60">Đếm ngược 60s</button>
+              <button onclick="startRestCountdown(0)" class="px-3 py-1 rounded-lg bg-white/10 text-xs font-bold hover:bg-white/20" data-i18n="focus_rest_skip">Bỏ qua nghỉ</button>
             </div>
           </div>
         </div>
@@ -1999,7 +1998,7 @@
       <!-- Right: Interactive Set Checkboxes -->
       <div class="md:col-span-7 p-6 rounded-2xl bg-white/5 border border-white/10">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="font-display font-bold text-xl uppercase">ĐÁNH DẤU HIỆP TẬP (SETS)</h3>
+          <h3 class="font-display font-bold text-xl uppercase" data-i18n="focus_sets_title">ĐÁNH DẤU HIỆP TẬP (SETS)</h3>
           <span id="focusSetsProgressText" class="text-xs font-bold text-brand">2 / 4 Hiệp hoàn tất</span>
         </div>
 
@@ -2010,7 +2009,7 @@
         <!-- Complete Entire Workout CTA -->
         <button onclick="finishWorkoutCelebration()" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-display font-bold text-lg uppercase tracking-wider shadow-xl shadow-brand/30 transition flex items-center justify-center gap-2">
           <i class="fa-solid fa-trophy"></i>
-          <span>HOÀN THÀNH BUỔI TẬP & NHẬN +180 XP</span>
+          <span data-i18n="focus_finish_btn">HOÀN THÀNH BUỔI TẬP & NHẬN +180 XP</span>
         </button>
       </div>
     </div>
@@ -2031,7 +2030,7 @@
       <button onclick="closeCoachModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg gq-elevated flex items-center justify-center">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <h3 class="font-display font-bold text-2xl uppercase mb-4">CHỌN AI COACH CỦA BẠN</h3>
+      <h3 class="font-display font-bold text-2xl uppercase mb-4" data-i18n="modal_coach_title">CHỌN AI COACH CỦA BẠN</h3>
       <div class="space-y-3">
         <div onclick="selectCoachGlobal('steel'); closeCoachModal();" class="p-4 rounded-2xl gq-elevated hover:border-brand cursor-pointer flex items-center gap-4">
           <div class="text-3xl">🪖</div>
@@ -2080,10 +2079,10 @@
 
       <!-- Auth Mode Switcher Tabs (Login / Register) -->
       <div id="authModeTabs" class="grid grid-cols-2 p-1 rounded-xl gq-elevated mb-4">
-        <button type="button" onclick="switchAuthMode('login')" id="authTab_login" class="py-2 rounded-lg text-xs font-bold bg-brand text-white transition">
+        <button type="button" onclick="switchAuthMode('login')" id="authTab_login" class="py-2 rounded-lg text-xs font-bold bg-brand text-white transition" data-i18n="auth_tab_login">
           Đăng Nhập
         </button>
-        <button type="button" onclick="switchAuthMode('register')" id="authTab_register" class="py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition">
+        <button type="button" onclick="switchAuthMode('register')" id="authTab_register" class="py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition" data-i18n="auth_tab_reg">
           Đăng Ký Mới
         </button>
       </div>
@@ -2099,13 +2098,13 @@
         </div>
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="text-[11px] font-bold uppercase text-slate-400">MẬT KHẨU</label>
-            <button type="button" onclick="switchAuthMode('forgot')" class="text-[11px] font-bold text-brand hover:underline">Quên mật khẩu?</button>
+            <label class="text-[11px] font-bold uppercase text-slate-400" data-i18n="auth_password">MẬT KHẨU</label>
+            <button type="button" onclick="switchAuthMode('forgot')" class="text-[11px] font-bold text-brand hover:underline" data-i18n="auth_forgot">Quên mật khẩu?</button>
           </div>
           <input id="loginPasswordInput" type="password" placeholder="Nhập mật khẩu của bạn..." class="w-full px-4 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
         </div>
         <button type="submit" id="loginSubmitBtn" class="w-full py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
-          <span>Đăng Nhập & Đồng Bộ</span>
+          <span data-i18n="auth_login_btn">Đăng Nhập & Đồng Bộ</span>
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
@@ -2114,11 +2113,11 @@
       <form id="authFormRegister" onsubmit="handleFirebaseRegister(event)" class="hidden space-y-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">HỌ & TÊN</label>
+            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1" data-i18n="auth_fullname">HỌ & TÊN</label>
             <input id="regNameInput" type="text" placeholder="VD: Minh Thuận" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
           </div>
           <div>
-            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">SỐ ĐIỆN THOẠI</label>
+            <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1" data-i18n="auth_phone">SỐ ĐIỆN THOẠI</label>
             <input id="regPhoneInput" type="tel" placeholder="09xx xxx xxx" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
           </div>
         </div>
@@ -2127,12 +2126,12 @@
           <input id="regEmailInput" type="email" placeholder="tenban@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
         </div>
         <div>
-          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1">MẬT KHẨU (TỐI THIỂU 6 KÝ TỰ)</label>
+          <label class="text-[11px] font-bold uppercase text-slate-400 block mb-1" data-i18n="auth_password_min">MẬT KHẨU (TỐI THIỂU 6 KÝ TỰ)</label>
           <input id="regPasswordInput" type="password" minlength="6" placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl gq-elevated text-sm focus:outline-none focus:border-brand" required />
         </div>
         <button type="submit" id="registerSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand to-amber-500 hover:brightness-110 text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
           <i class="fa-solid fa-user-plus"></i>
-          <span>Tạo Tài Khoản Cloud</span>
+          <span data-i18n="auth_reg_btn">Tạo Tài Khoản Cloud</span>
         </button>
       </form>
 
@@ -2147,7 +2146,7 @@
         </div>
         <button type="submit" id="forgotSubmitBtn" class="w-full py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm shadow-lg shadow-brand/30 transition flex items-center justify-center gap-2">
           <i class="fa-solid fa-paper-plane"></i>
-          <span>Gửi Link Đặt Lại Mật Khẩu</span>
+          <span data-i18n="auth_forgot_btn">Gửi Link Đặt Lại Mật Khẩu</span>
         </button>
         <button type="button" onclick="switchAuthMode('login')" class="w-full py-2 text-xs font-bold text-slate-400 hover:text-brand transition">
           ← Quay lại Đăng Nhập
@@ -2158,7 +2157,7 @@
       <div class="mt-5 pt-4 border-t border-slate-200 dark:border-white/10">
         <button type="button" onclick="handleDemoLogin(event)" class="w-full py-2.5 rounded-xl gq-elevated hover:border-brand text-xs font-bold text-slate-300 hover:text-brand transition flex items-center justify-center gap-2">
           <i class="fa-solid fa-bolt text-amber-400"></i>
-          <span>Vào Nhanh Bản Demo (Không Cần Đăng Nhập)</span>
+          <span data-i18n="auth_demo_btn">Vào Nhanh Bản Demo (Không Cần Đăng Nhập)</span>
         </button>
       </div>
     </div>
@@ -2170,7 +2169,7 @@
       <button onclick="closeAddFriendModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg gq-elevated flex items-center justify-center">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <h3 class="font-display font-bold text-2xl uppercase mb-4">GỢI Ý KẾT BẠN</h3>
+      <h3 class="font-display font-bold text-2xl uppercase mb-4" data-i18n="modal_add_friend_title">GỢI Ý KẾT BẠN</h3>
       <div class="space-y-3">
         <div class="p-3 rounded-xl gq-elevated flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -3511,8 +3510,8 @@
         lbl_video_url: 'Link Video/GIF (Tùy chọn)',
         btn_confirm_add_ex: 'Thêm Vào Lịch',
         modal_form_badge: 'VIDEO ĐỘNG TÁC MP4 & HƯỚNG DẪN KỸ THUẬT CHUẨN',
-        tab_live_video: '🎬 Video Động Tác MP4 (Loop)',
-        tab_svg_sim: '🏃 Mô Phỏng Cơ Học 2D',
+        tab_live_video: 'Video MP4',
+        tab_svg_sim: 'Mô Phỏng 2D',
         btn_change_video_url: 'Đổi Link Video',
         svg_tempo_note: 'Nhịp độ chuẩn (Tempo): 2 giây hạ - 1 giây giữ đỉnh - 1 giây phát lực',
         modal_target_muscle_lbl: 'Nhóm cơ tác động chính:',
@@ -3546,9 +3545,9 @@
         cf_all: 'TẤT CẢ',
         lb_title: 'BẢNG XẾP HẠNG CỘNG ĐỒNG',
         lb_sub: 'Cập nhật theo thời gian thực dựa trên XP tích lũy và chuỗi Streak.',
-        lb_weekly: 'TUẦN NÀY (WEEKLY)',
-        lb_monthly: 'THÁNG NÀY (MONTHLY)',
-        lb_alltime: 'MỌI THỜI ĐẠI (ALL TIME)',
+        lb_weekly: 'TUẦN NÀY',
+        lb_monthly: 'THÁNG NÀY',
+        lb_alltime: 'MỌI THỜI ĐẠI',
         joined_date: 'Tham gia 14 Thg 8, 2025',
         prof_stat_cur_streak: 'CHUỖI HIỆN TẠI',
         prof_stat_best_streak: 'CHUỖI DÀI NHẤT',
@@ -3605,7 +3604,73 @@
         modal_create_chal_title: 'TẠO THỬ THÁCH MỚI',
         modal_chal_name_label: 'Tên Thử Thách',
         modal_chal_days_label: 'Số Ngày Mục Tiêu',
-        modal_chal_submit_btn: 'Tạo & Tham Gia Ngay (+750 XP)'
+        modal_chal_submit_btn: 'Tạo & Tham Gia Ngay (+750 XP)',
+        nav_pricing: 'BẢNG GIÁ GÓI TẬP',
+        hero_cta_pricing: 'Bảng Giá 3 Gói',
+        pr_badge: 'MÔ HÌNH ĐĂNG KÝ LINH HOẠT • SAAS PRICING',
+        pr_title_1: 'CHỌN GÓI ',
+        pr_title_2: 'NÂNG CẤP SỨC MẠNH',
+        pr_sub: 'Đầu tư cho kỷ luật bản thân. Bạn có thể chuyển đổi qua lại giữa 3 gói ngay lập tức để trải nghiệm phân quyền tính năng.',
+        pr_monthly: 'Thanh Toán Tháng',
+        pr_yearly: 'Theo Năm',
+        pr_save: '-20% TIẾT KIỆM',
+        pr_basic_name: 'GÓI BASIC',
+        pr_basic_desc: 'Dành cho người mới làm quen với thói quen tập luyện cơ bản.',
+        pr_forever: '/ vĩnh viễn',
+        pr_basic_note: 'Miễn phí 100% cho người bắt đầu',
+        pr_b_f1: 'Truy cập 5 bài tập mặc định mỗi ngày',
+        pr_b_f2: 'Lưu chuỗi Điểm danh (Streak) 7 ngày gần nhất',
+        pr_b_f3: 'Xem hướng dẫn kỹ thuật & Video cơ bản',
+        pr_b_f4: 'Kho 34 bài tập đa dạng & Tự tạo lịch tập',
+        pr_b_f5: 'AI Coach 24/7 & Mô phỏng cơ sinh học 2D',
+        pr_b_f6: 'Nhân hệ số +50% XP VIP mỗi buổi tập',
+        pr_pro_name: 'GÓI PRO',
+        pr_pro_desc: 'Dành cho Gymer nghiêm túc muốn tự thiết kế lịch tập & theo dõi dữ liệu sâu.',
+        pr_p_f1: 'Mở khóa toàn bộ Kho 34 Bài Tập (6 nhóm cơ)',
+        pr_p_f2: 'Tự do Thêm / Xóa & tùy chỉnh lịch tập không giới hạn',
+        pr_p_f3: 'Trình phát Video MP4 & 2 Pha tốc độ 0.5x–1.5x',
+        pr_p_f4: 'Biểu đồ phân tích XP & Cân bằng nhóm cơ chuyên sâu',
+        pr_p_f5: 'Tham gia Thách đấu Solo 1v1 cùng bạn bè',
+        pr_p_f6: 'Trợ lý AI Coach 24/7 & +50% XP VIP',
+        pr_elite_name: 'GÓI ELITE VIP',
+        pr_elite_desc: 'Trải nghiệm toàn diện thay thế PT cá nhân với AI Coach 24/7 & đặc quyền VIP.',
+        pr_e_f1: 'Bao gồm toàn bộ quyền lợi của Gói PRO',
+        pr_e_f2: 'Mở khóa 3 Huấn Luyện Viên AI Coach 24/7 (Thực đơn & lịch tập)',
+        pr_e_f3: 'Mở khóa Mô Phỏng Cơ Sinh Học 2D Vector chuyên sâu',
+        pr_e_f4: 'Đặc quyền +50% Bonus XP cho mọi bài tập & buổi tập',
+        pr_e_f5: 'Huy hiệu Vương Miện VIP Vàng trên Bảng Xếp Hạng & Hồ Sơ',
+        pr_e_f6: 'Lá chắn bảo vệ chuỗi Streak tự động (Streak Freeze)',
+        chal_stat_active: '⚡ ĐANG THAM GIA',
+        chal_stat_done: '✓ HOÀN THÀNH',
+        chal_stat_badges: '🏅 HUY HIỆU',
+        btn_cloud_sync: 'Đồng bộ Cloud',
+        prof_cloud_title: 'TÀI KHOẢN ĐÁM MÂY (FIREBASE)',
+        btn_logout: 'Đăng Xuất',
+        prof_sub_label: 'GÓI ĐĂNG KÝ CỦA BẠN:',
+        prof_change_plan_btn: 'Đổi Gói Đăng Ký (3 Gói)',
+        ach_auto_sub: 'Tự động mở khóa khi bạn Điểm danh, Tập luyện tăng XP, Lên Level hoặc Thách đấu bạn bè.',
+        menu_plans: 'Gói Đăng Ký (3 Gói)',
+        btn_upgrade_plan: 'Nâng Cấp / Đổi Gói',
+        focus_exit: 'Thoát Focus Mode',
+        focus_now_lifting: 'ĐANG TẬP BÀI',
+        focus_rest_title: 'ĐỒNG HỒ NGHỈ GIỮA HIỆP',
+        focus_rest_60: 'Đếm ngược 60s',
+        focus_rest_skip: 'Bỏ qua nghỉ',
+        focus_sets_title: 'ĐÁNH DẤU HIỆP TẬP (SETS)',
+        focus_finish_btn: 'HOÀN THÀNH BUỔI TẬP & NHẬN +180 XP',
+        modal_coach_title: 'CHỌN AI COACH CỦA BẠN',
+        modal_add_friend_title: 'GỢI Ý KẾT BẠN',
+        auth_tab_login: 'Đăng Nhập',
+        auth_tab_reg: 'Đăng Ký Mới',
+        auth_password: 'MẬT KHẨU',
+        auth_forgot: 'Quên mật khẩu?',
+        auth_login_btn: 'Đăng Nhập & Đồng Bộ',
+        auth_fullname: 'HỌ & TÊN',
+        auth_phone: 'SỐ ĐIỆN THOẠI',
+        auth_password_min: 'MẬT KHẨU (TỐI THIỂU 6 KÝ TỰ)',
+        auth_reg_btn: 'Tạo Tài Khoản Cloud',
+        auth_forgot_btn: 'Gửi Link Đặt Lại Mật Khẩu',
+        auth_demo_btn: 'Vào Nhanh Bản Demo (Không Cần Đăng Nhập)',
       },
       en: {
         nav_features: 'FEATURES',
@@ -3743,8 +3808,8 @@
         lbl_video_url: 'Video/GIF URL (Optional)',
         btn_confirm_add_ex: 'Add to Workout',
         modal_form_badge: 'SHORT MP4 VIDEO DEMO & PRO BIOMECHANICAL FORM GUIDE',
-        tab_live_video: '🎬 MP4 Video Loop',
-        tab_svg_sim: '🏃 2D Biomechanics',
+        tab_live_video: 'MP4 Video',
+        tab_svg_sim: '2D Simulation',
         btn_change_video_url: 'Custom Video URL',
         svg_tempo_note: 'Recommended Tempo: 2s Eccentric - 1s Peak Hold - 1s Concentric',
         modal_target_muscle_lbl: 'Primary Target Muscles:',
@@ -3837,7 +3902,73 @@
         modal_create_chal_title: 'CREATE NEW CHALLENGE',
         modal_chal_name_label: 'Challenge Title',
         modal_chal_days_label: 'Target Days',
-        modal_chal_submit_btn: 'Create & Join Now (+750 XP)'
+        modal_chal_submit_btn: 'Create & Join Now (+750 XP)',
+        nav_pricing: 'PRICING',
+        hero_cta_pricing: '3-Tier Pricing',
+        pr_badge: 'FLEXIBLE SUBSCRIPTION • SAAS PRICING',
+        pr_title_1: 'CHOOSE YOUR ',
+        pr_title_2: 'POWER UPGRADE',
+        pr_sub: 'Invest in your daily discipline. Switch freely between all 3 tiers anytime to test every unlocked feature.',
+        pr_monthly: 'Monthly',
+        pr_yearly: 'Yearly',
+        pr_save: 'SAVE 20%',
+        pr_basic_name: 'BASIC PLAN',
+        pr_basic_desc: 'Perfect for beginners building a consistent gym habit.',
+        pr_forever: '/ forever',
+        pr_basic_note: '100% Free for starters',
+        pr_b_f1: 'Access 5 default workouts every day',
+        pr_b_f2: 'Track your 7-day check-in streak',
+        pr_b_f3: 'Watch basic form guides & videos',
+        pr_b_f4: '34-Exercise Video Library & Custom Planner',
+        pr_b_f5: '24/7 AI Coach & 2D Biomechanics Simulation',
+        pr_b_f6: '+50% VIP Bonus XP per workout',
+        pr_pro_name: 'PRO PLAN',
+        pr_pro_desc: 'Built for dedicated lifters who want custom routines & deep analytics.',
+        pr_p_f1: 'Unlock full 34-Exercise Library (6 muscle groups)',
+        pr_p_f2: 'Unlimited Add / Remove custom workout builder',
+        pr_p_f3: 'MP4 Video Loop & 2-Phase Analyzer (0.5x–1.5x)',
+        pr_p_f4: 'Deep XP Velocity & Muscle Balance Charts',
+        pr_p_f5: 'Send 1v1 Head-to-Head Duels to friends',
+        pr_p_f6: '24/7 AI Coach & +50% VIP Bonus XP',
+        pr_elite_name: 'ELITE VIP',
+        pr_elite_desc: 'All-in-one personal training with 24/7 AI Coaching & VIP perks.',
+        pr_e_f1: 'Includes every feature from the PRO Plan',
+        pr_e_f2: 'Unlock 3 AI Coaches 24/7 (Diet & Training)',
+        pr_e_f3: 'Unlock 2D Vector Biomechanics Simulation',
+        pr_e_f4: '+50% Bonus XP Multiplier on every session',
+        pr_e_f5: 'Golden VIP Crown on Leaderboard & Profile',
+        pr_e_f6: 'Automatic Streak Freeze Protection',
+        chal_stat_active: '⚡ ACTIVE',
+        chal_stat_done: '✓ COMPLETED',
+        chal_stat_badges: '🏅 BADGES',
+        btn_cloud_sync: 'Cloud Sync',
+        prof_cloud_title: 'CLOUD ACCOUNT (FIREBASE)',
+        btn_logout: 'Sign Out',
+        prof_sub_label: 'YOUR SUBSCRIPTION:',
+        prof_change_plan_btn: 'Switch Plan (3 Tiers)',
+        ach_auto_sub: 'Automatically unlocks as you Check In, earn XP, Level Up, or challenge friends.',
+        menu_plans: 'Pricing Plans (3 Tiers)',
+        btn_upgrade_plan: 'Upgrade / Switch Plan',
+        focus_exit: 'Exit Focus Mode',
+        focus_now_lifting: 'NOW LIFTING',
+        focus_rest_title: 'REST TIMER',
+        focus_rest_60: 'Start 60s Rest',
+        focus_rest_skip: 'Skip Rest',
+        focus_sets_title: 'LOG YOUR SETS',
+        focus_finish_btn: 'FINISH WORKOUT & CLAIM +180 XP',
+        modal_coach_title: 'CHOOSE YOUR AI COACH',
+        modal_add_friend_title: 'SUGGESTED FRIENDS',
+        auth_tab_login: 'Sign In',
+        auth_tab_reg: 'Create Account',
+        auth_password: 'PASSWORD',
+        auth_forgot: 'Forgot password?',
+        auth_login_btn: 'Sign In & Sync',
+        auth_fullname: 'FULL NAME',
+        auth_phone: 'PHONE NUMBER',
+        auth_password_min: 'PASSWORD (MIN 6 CHARS)',
+        auth_reg_btn: 'Create Cloud Account',
+        auth_forgot_btn: 'Send Password Reset Link',
+        auth_demo_btn: 'Quick Demo Mode (No Sign In)',
       }
     };
 
@@ -4438,12 +4569,16 @@
         if (mBtn) {
           mBtn.textContent = isCurrent
             ? (state.lang === 'vi' ? '✓ Đang Sử Dụng Gói Này' : '✓ Current Active Plan')
-            : (k === 'basic' ? 'Chuyển sang Basic (0đ)' : k === 'pro' ? 'Kích Hoạt Gói PRO' : 'Kích Hoạt ELITE VIP 👑');
+            : (state.lang === 'vi'
+                ? (k === 'basic' ? 'Chuyển sang Basic (0đ)' : k === 'pro' ? 'Kích Hoạt Gói PRO' : 'Kích Hoạt ELITE VIP 👑')
+                : (k === 'basic' ? 'Switch to Basic (Free)' : k === 'pro' ? 'Activate PRO Plan' : 'Activate ELITE VIP 👑'));
         }
         if (lBtn) {
           lBtn.innerHTML = isCurrent
-            ? `<span>✓ Đang Kích Hoạt (${k.toUpperCase()})</span>`
-            : (k === 'basic' ? '<span>Dùng Gói Basic</span>' : k === 'pro' ? '<i class="fa-solid fa-bolt"></i><span>Kích Hoạt Gói Pro</span>' : '<i class="fa-solid fa-crown"></i><span>Trải Nghiệm VIP Elite</span>');
+            ? `<span>✓ ${state.lang === 'vi' ? 'Đang Kích Hoạt' : 'Active Plan'} (${k.toUpperCase()})</span>`
+            : (state.lang === 'vi'
+                ? (k === 'basic' ? '<span>Dùng Gói Basic</span>' : k === 'pro' ? '<i class="fa-solid fa-bolt"></i><span>Kích Hoạt Gói Pro</span>' : '<i class="fa-solid fa-crown"></i><span>Trải Nghiệm VIP Elite</span>')
+                : (k === 'basic' ? '<span>Use Basic Plan</span>' : k === 'pro' ? '<i class="fa-solid fa-bolt"></i><span>Activate Pro Plan</span>' : '<i class="fa-solid fa-crown"></i><span>Try Elite VIP</span>'));
         }
       });
 
@@ -5082,8 +5217,8 @@
       const b05 = document.getElementById('speedBtn_05');
       const b10 = document.getElementById('speedBtn_10');
       const b15 = document.getElementById('speedBtn_15');
-      const activeCls = 'text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-brand text-white border border-brand transition';
-      const inactiveCls = 'text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-black/80 text-slate-300 border border-white/15 hover:border-brand transition';
+      const activeCls = 'text-[11px] font-mono font-bold px-2 py-1 rounded-lg bg-brand text-white transition';
+      const inactiveCls = 'text-[11px] font-mono font-bold px-2 py-1 rounded-lg gq-card text-slate-400 hover:border-brand transition';
 
       if (b05) b05.className = rate === 0.5 ? activeCls : inactiveCls;
       if (b10) b10.className = rate === 1.0 ? activeCls : inactiveCls;
@@ -5142,12 +5277,13 @@
       const phaseBadge = document.getElementById('athletePhaseBadge');
 
       const mp4Url = resolveExerciseMp4(ex);
-      startAthleteMotionLoop(frames);
+      stopAthleteMotionLoop();
 
       // Check if user supplied a custom .gif URL
       if (ex.videoUrl && ex.videoUrl.toLowerCase().endsWith('.gif')) {
         stageEl.classList.add('hidden');
         videoEl.classList.add('hidden');
+        if (phaseBadge) phaseBadge.classList.add('hidden');
         gifEl.classList.remove('hidden');
         gifEl.src = ex.videoUrl;
         if (badgeEl) badgeEl.textContent = 'CUSTOM GIF LOOP';
@@ -5163,20 +5299,18 @@
           videoEl.src = mp4Url;
           videoEl.load();
         }
-        videoEl.play().catch(() => {
-          // Automatic fallback to dual-frame only if network blocks MP4
+        const fallbackTo2Phase = () => {
           primaryVideoMode = 'motion_pro';
           videoEl.classList.add('hidden');
           stageEl.classList.remove('hidden');
           if (phaseBadge) phaseBadge.classList.remove('hidden');
-        });
-        videoEl.onerror = () => {
-          primaryVideoMode = 'motion_pro';
-          videoEl.classList.add('hidden');
-          stageEl.classList.remove('hidden');
-          if (phaseBadge) phaseBadge.classList.remove('hidden');
+          if (badgeEl) badgeEl.textContent = state.lang === 'vi' ? 'PHÂN TÍCH 2 PHA' : '2-PHASE FORM';
+          if (switchTxt) switchTxt.textContent = state.lang === 'vi' ? 'Xem Video MP4' : 'Watch MP4';
+          startAthleteMotionLoop(frames);
         };
-        if (badgeEl) badgeEl.textContent = 'HD MP4 LOOP • 60FPS';
+        videoEl.onerror = fallbackTo2Phase;
+        videoEl.play().catch(fallbackTo2Phase);
+        if (badgeEl) badgeEl.textContent = 'HD MP4 LOOP';
         if (switchTxt) switchTxt.textContent = state.lang === 'vi' ? 'Chế độ 2 Pha' : '2-Phase View';
       } else {
         if (videoEl) {
@@ -5186,8 +5320,9 @@
         gifEl.classList.add('hidden');
         stageEl.classList.remove('hidden');
         if (phaseBadge) phaseBadge.classList.remove('hidden');
-        if (badgeEl) badgeEl.textContent = '2-PHASE FORM ANALYSIS';
-        if (switchTxt) switchTxt.textContent = state.lang === 'vi' ? 'Xem Video MP4' : 'Watch MP4 Video';
+        if (badgeEl) badgeEl.textContent = state.lang === 'vi' ? 'PHÂN TÍCH 2 PHA' : '2-PHASE FORM';
+        if (switchTxt) switchTxt.textContent = state.lang === 'vi' ? 'Xem Video MP4' : 'Watch MP4';
+        startAthleteMotionLoop(frames);
       }
     }
 
@@ -5206,17 +5341,20 @@
       const vBtn = document.getElementById('formTabBtn_video');
       const sBtn = document.getElementById('formTabBtn_svg');
 
-      const activeCls = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand text-white transition flex items-center gap-1.5';
-      const inactiveCls = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-brand transition flex items-center gap-1.5';
+      const ctrlBar = document.getElementById('formVideoControlsBar');
+      const activeCls = 'px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-brand text-white transition flex items-center gap-1.5 whitespace-nowrap';
+      const inactiveCls = 'px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-slate-400 hover:text-brand transition flex items-center gap-1.5 whitespace-nowrap';
 
       if (mode === 'video') {
         vBox.classList.remove('hidden');
         sBox.classList.add('hidden');
+        if (ctrlBar) ctrlBar.classList.remove('hidden');
         vBtn.className = activeCls;
         sBtn.className = inactiveCls;
       } else {
         vBox.classList.add('hidden');
         sBox.classList.remove('hidden');
+        if (ctrlBar) ctrlBar.classList.add('hidden');
         vBtn.className = inactiveCls;
         sBtn.className = activeCls;
       }
@@ -6221,7 +6359,9 @@
       renderExerciseSuggestions();
       renderFriendsList();
       renderChallengesGrid();
-      renderLeaderboard('weekly');
+      renderLeaderboard(state.activeLeaderboardPeriod || 'weekly');
+      applySubscriptionPlan(state.subscriptionPlan, false);
+      if (typeof updateCloudAuthUI === 'function') updateCloudAuthUI(state.firebaseUser);
       selectCoachGlobal(state.currentCoach, true);
       showToast(state.lang === 'vi' ? '🇻🇳 Đã chuyển sang Tiếng Việt 100%' : '🇬🇧 Switched to 100% English Mode');
     }
@@ -6620,20 +6760,21 @@
           sbStatus.innerHTML = `<span class="truncate flex items-center gap-1.5 text-emerald-400"><i class="fa-solid fa-cloud-check"></i><span class="truncate">${user.email || 'Cloud Synced'}</span></span>`;
         }
         if (sbAuthBtn) {
-          sbAuthBtn.innerHTML = `<i class="fa-solid fa-right-from-bracket text-rose-400"></i><span>Đăng Xuất Cloud</span>`;
+          sbAuthBtn.innerHTML = `<i class="fa-solid fa-right-from-bracket text-rose-400"></i><span>${state.lang === 'vi' ? 'Đăng Xuất Cloud' : 'Cloud Sign Out'}</span>`;
         }
         if (profBadge) {
-          profBadge.textContent = '☁️ ĐÃ ĐỒNG BỘ CLOUD';
+          profBadge.textContent = state.lang === 'vi' ? '☁️ ĐÃ ĐỒNG BỘ CLOUD' : '☁️ CLOUD SYNCED';
           profBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
         }
         if (profInfo) {
-          const phonePart = state.userProfile.phone ? ` • SĐT: ${state.userProfile.phone}` : '';
+          const phoneLabel = state.lang === 'vi' ? 'SĐT' : 'Phone';
+          const phonePart = state.userProfile.phone ? ` • ${phoneLabel}: ${state.userProfile.phone}` : '';
           profInfo.textContent = `${user.email || ''}${phonePart}`;
         }
         if (profLoginBtn) profLoginBtn.classList.add('hidden');
         if (profLogoutBtn) profLogoutBtn.classList.remove('hidden');
         if (landingBtn) {
-          landingBtn.innerHTML = `<span>Vào App Ngay</span><i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>`;
+          landingBtn.innerHTML = `<span>${state.lang === 'vi' ? 'Vào App Ngay' : 'Open App'}</span><i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>`;
         }
       } else {
         if (mobDot) {
@@ -6651,7 +6792,9 @@
           profBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-600/40 text-slate-300';
         }
         if (profInfo) {
-          profInfo.textContent = 'Đăng nhập để đồng bộ XP, Level, Streak & Huy hiệu xuyên thiết bị.';
+          profInfo.textContent = state.lang === 'vi'
+            ? 'Đăng nhập để đồng bộ XP, Level, Streak & Huy hiệu xuyên thiết bị.'
+            : 'Sign in to sync your XP, Level, Streak & Badges across devices.';
         }
         if (profLoginBtn) profLoginBtn.classList.remove('hidden');
         if (profLogoutBtn) profLogoutBtn.classList.add('hidden');
