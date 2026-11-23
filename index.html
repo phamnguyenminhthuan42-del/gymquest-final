@@ -75,7 +75,7 @@
       background-color: var(--bg-primary);
       color: var(--text-primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
+      overflow-x: clip;
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
@@ -185,7 +185,7 @@
     }
     html, body {
       max-width: 100%;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     .grid > * {
       min-width: 0;
@@ -740,7 +740,7 @@
   <!-- ===================================================================== -->
   <!-- 2. MAIN APPLICATION SHELL (SIDEBAR + DASHBOARD / FRIENDS / ETC.)       -->
   <!-- ===================================================================== -->
-  <div id="appView" class="hidden min-h-screen w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row">
+  <div id="appView" class="hidden min-h-screen w-full max-w-full overflow-x-clip flex flex-col lg:flex-row">
 
     <!-- LEFT SIDEBAR (Desktop Only — Mobile Uses Native Bottom Navigation Bar) -->
     <aside class="hidden lg:flex lg:w-64 lg:fixed lg:inset-y-0 lg:left-0 z-30 gq-card border-r border-slate-200 dark:border-white/10 flex-col justify-between overflow-y-auto no-scrollbar">
@@ -878,7 +878,7 @@
     </aside>
 
     <!-- MAIN CONTENT CONTAINER (pb-24 on mobile to clear Bottom Navigation Bar) -->
-    <main class="flex-1 min-w-0 w-full max-w-full overflow-x-hidden lg:ml-64 min-h-screen flex flex-col pb-24 lg:pb-6">
+    <main class="flex-1 min-w-0 w-full max-w-full overflow-x-clip lg:ml-64 min-h-screen flex flex-col pb-24 lg:pb-6">
 
       <!-- UNIFIED SINGLE-TIER TOP HEADER (1 Compact Bar on Mobile, Full Utility Bar on Desktop) -->
       <header class="sticky top-0 z-30 h-14 lg:h-16 px-2.5 sm:px-6 lg:px-8 backdrop-blur-md bg-white/90 dark:bg-obsidian-950/90 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-1.5 sm:gap-3">
@@ -1263,9 +1263,9 @@
 
             <!-- Primary Action: Launch Active Workout Focus Mode -->
             <div class="flex flex-col sm:flex-row gap-3">
-              <button onclick="openFocusWorkoutMode()" class="flex-1 py-4 rounded-xl bg-brand hover:bg-brand-hover text-white font-display font-bold text-lg uppercase tracking-wider shadow-xl shadow-brand/25 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-play"></i>
-                <span data-i18n="btn_start_focus_workout">BẮT ĐẦU TẬP LUYỆN (FOCUS MODE)</span>
+              <button onclick="openFocusWorkoutMode()" class="flex-1 px-4 py-3.5 sm:py-4 rounded-xl bg-brand hover:bg-brand-hover text-white font-display font-bold text-sm sm:text-lg uppercase tracking-wide sm:tracking-wider shadow-xl shadow-brand/25 transition flex items-center justify-center gap-2 sm:gap-3 text-center">
+                <i class="fa-solid fa-play shrink-0"></i>
+                <span class="leading-tight" data-i18n="btn_start_focus_workout">BẮT ĐẦU TẬP LUYỆN (FOCUS MODE)</span>
               </button>
             </div>
           </div>
@@ -4749,8 +4749,8 @@
                 <div class="font-bold text-sm sm:text-base truncate ${ex.done ? 'line-through text-slate-400' : ''} group-hover:text-brand transition">
                   ${title}
                 </div>
-                <div class="text-xs text-slate-400 flex items-center gap-2 mt-0.5 truncate">
-                  <span>🎯 ${muscle}</span>
+                <div class="text-xs text-slate-400 mt-0.5 truncate">
+                  🎯 ${muscle}
                 </div>
               </div>
             </div>
@@ -5846,16 +5846,18 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-5">
-            <div class="text-right">
-              <div class="font-mono font-bold text-sm text-brand">🔥 ${f.streak}</div>
-              <div class="text-[10px] text-slate-400">streak</div>
+          <div class="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-4 pt-2 sm:pt-0 border-t border-slate-200/60 dark:border-white/5 sm:border-t-0">
+            <div class="flex items-center gap-5">
+              <div class="text-left sm:text-right">
+                <div class="font-mono font-bold text-sm text-brand">🔥 ${f.streak}</div>
+                <div class="text-[10px] text-slate-400">streak</div>
+              </div>
+              <div class="text-left sm:text-right">
+                <div class="font-mono font-bold text-sm text-amber-400">${f.xp.toLocaleString()}</div>
+                <div class="text-[10px] text-slate-400">XP</div>
+              </div>
             </div>
-            <div class="text-right">
-              <div class="font-mono font-bold text-sm text-amber-400">${f.xp.toLocaleString()}</div>
-              <div class="text-[10px] text-slate-400">XP</div>
-            </div>
-            <button onclick="openDuelModal(${f._origIdx})" class="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${f.challenged ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-brand/15 hover:bg-brand text-brand hover:text-white border border-brand/40'}">
+            <button onclick="openDuelModal(${f._origIdx})" class="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap shrink-0 ${f.challenged ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-brand/15 hover:bg-brand text-brand hover:text-white border border-brand/40'}">
               <span>${f.challenged ? chalDoneTxt : chalBtnTxt}</span>
             </button>
           </div>
@@ -6151,18 +6153,18 @@
           const rankNum = idx + 1;
           const medal = rankNum === 1 ? '🥇' : rankNum === 2 ? '🥈' : rankNum === 3 ? '🥉' : rankNum;
           const cloudPill = r.isCloud
-            ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 ml-1">☁️ Cloud</span>`
+            ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">☁️ Cloud</span>`
             : '';
           return `
             <div class="gq-card rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-2 ${r.isMe ? 'border-brand bg-brand/10 ring-1 ring-brand/40' : ''}">
-              <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div class="flex items-center gap-2.5 sm:gap-4 min-w-0 flex-1">
                 <span class="font-display font-bold text-base sm:text-lg w-7 text-center shrink-0 ${r.isMe ? 'text-brand' : 'text-slate-400'}">${medal}</span>
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl gq-elevated flex items-center justify-center text-lg sm:text-xl shrink-0">${r.avatar}</div>
-                <div class="min-w-0">
-                  <div class="font-bold text-xs sm:text-base truncate flex items-center ${r.isMe ? 'text-brand' : ''}">
-                    <span class="truncate">${r.name}</span>${cloudPill}
+                <div class="min-w-0 flex-1">
+                  <div class="font-bold text-xs sm:text-base truncate ${r.isMe ? 'text-brand' : ''}">${r.name}</div>
+                  <div class="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">
+                    <span class="truncate">${r.lvl}</span>${cloudPill}
                   </div>
-                  <div class="text-[11px] sm:text-xs text-slate-400 truncate">${r.lvl}</div>
                 </div>
               </div>
               <div class="flex items-center gap-3 sm:gap-5 shrink-0">
@@ -6241,8 +6243,8 @@
       const searchInput = document.getElementById('friendSearchInput');
       if (searchInput) {
         searchInput.placeholder = state.lang === 'vi'
-          ? 'Tìm kiếm trong 15 bạn bè theo tên hoặc @username...'
-          : 'Search 15 friends by name or @username...';
+          ? 'Tìm bạn bè theo tên hoặc @username...'
+          : 'Search friends by name or @username...';
       }
 
       const chatInput = document.getElementById('chatInputBox');
