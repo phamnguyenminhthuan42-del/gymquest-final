@@ -197,7 +197,7 @@
   <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-[100]"></canvas>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toastContainer" class="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[95] w-[92vw] max-w-md flex flex-col items-center gap-2 pointer-events-none"></div>
+  <div id="toastContainer" class="fixed top-16 lg:top-20 left-1/2 -translate-x-1/2 z-[95] w-[92vw] max-w-md flex flex-col items-center gap-2 pointer-events-none"></div>
 
   <!-- ===================================================================== -->
   <!-- 1. LANDING PAGE VIEW (HOME)                                           -->
@@ -248,41 +248,41 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-14 pb-20 lg:pt-20 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <section class="relative pt-8 pb-14 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <!-- Background ambient glow -->
-      <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[520px] h-[280px] bg-brand/15 blur-[130px] pointer-events-none rounded-full"></div>
+      <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[320px] sm:w-[520px] h-[220px] sm:h-[280px] bg-brand/15 blur-[130px] pointer-events-none rounded-full"></div>
 
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <!-- Left Column: Hero Copy -->
         <div class="lg:col-span-7 text-left">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full gq-elevated mb-6 border border-brand/30">
-            <span class="w-2.5 h-2.5 rounded-full bg-brand animate-ping"></span>
-            <span class="text-xs font-bold tracking-wider uppercase text-brand" data-i18n="hero_badge">DUOLINGO CHO PHÒNG GYM — BẢN NÂNG CẤP UI/UX</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full gq-elevated mb-4 sm:mb-6 border border-brand/30">
+            <span class="w-2 h-2 rounded-full bg-brand animate-ping shrink-0"></span>
+            <span class="text-[10px] sm:text-xs font-bold tracking-wider uppercase text-brand" data-i18n="hero_badge">DUOLINGO CHO PHÒNG GYM — BẢN NÂNG CẤP UI/UX</span>
           </div>
 
-          <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[0.98] tracking-tight uppercase mb-6">
+          <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight uppercase mb-4 sm:mb-6">
             <span data-i18n="hero_title_1">TẬP HĂNG SAY.</span><br />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand via-amber-400 to-brand" data-i18n="hero_title_2">LÊN CẤP NHANH.</span><br />
             <span data-i18n="hero_title_3">CHIẾN THẮNG MỖI NGÀY.</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl mb-8 leading-relaxed" data-i18n="hero_subtitle">
+          <p class="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl mb-6 sm:mb-8 leading-relaxed" data-i18n="hero_subtitle">
             Biến việc tập luyện thành một tựa game nhập vai. Tích lũy XP, giữ chuỗi Streak rực lửa, nhận huấn luyện thời gian thực từ AI Coach và đua Top cùng bạn bè.
           </p>
 
-          <div class="flex flex-wrap items-center gap-4">
-            <button onclick="enterAppDirectly()" class="px-7 py-4 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-base shadow-xl shadow-brand/30 transition transform hover:-translate-y-0.5 flex items-center gap-3 animate-glow">
+          <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-4">
+            <button onclick="enterAppDirectly()" class="col-span-2 px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-sm sm:text-base shadow-xl shadow-brand/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 animate-glow">
               <i class="fa-solid fa-bolt"></i>
               <span data-i18n="hero_cta_demo">Trải Nghiệm Ngay (Bản Demo)</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <a href="#pricing" class="px-6 py-4 rounded-xl gq-card hover:border-amber-400 font-bold text-base transition flex items-center gap-2 text-amber-400">
+            <a href="#pricing" class="px-3.5 sm:px-6 py-3 sm:py-4 rounded-xl gq-card hover:border-amber-400 font-bold text-xs sm:text-base transition flex items-center justify-center gap-1.5 sm:gap-2 text-amber-400 whitespace-nowrap">
               <i class="fa-solid fa-crown"></i>
-              <span>Bảng Giá 3 Gói Tập</span>
+              <span>Bảng Giá 3 Gói</span>
             </a>
-            <button onclick="openAuthModal()" class="px-6 py-4 rounded-xl gq-card hover:border-brand font-bold text-base transition flex items-center gap-2">
+            <button onclick="openAuthModal()" class="px-3.5 sm:px-6 py-3 sm:py-4 rounded-xl gq-card hover:border-brand font-bold text-xs sm:text-base transition flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
               <i class="fa-regular fa-user text-brand"></i>
-              <span data-i18n="hero_cta_login">Đăng Nhập / Đăng Ký</span>
+              <span data-i18n="hero_cta_login">Đăng Nhập</span>
             </button>
           </div>
 
@@ -874,17 +874,17 @@
     <main class="flex-1 lg:ml-64 min-h-screen flex flex-col pb-24 lg:pb-6">
 
       <!-- UNIFIED SINGLE-TIER TOP HEADER (1 Compact Bar on Mobile, Full Utility Bar on Desktop) -->
-      <header class="sticky top-0 z-30 h-14 lg:h-16 px-3 sm:px-6 lg:px-8 backdrop-blur-md bg-white/90 dark:bg-obsidian-950/90 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-2">
+      <header class="sticky top-0 z-30 h-14 lg:h-16 px-2.5 sm:px-6 lg:px-8 backdrop-blur-md bg-white/90 dark:bg-obsidian-950/90 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-1.5 sm:gap-3">
         <!-- Left Side: Compact Logo on Mobile | Coach + Demo Switchers on Desktop -->
-        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-          <!-- Mobile Compact Brand Logo -->
-          <button onclick="switchMainMode('landing')" class="flex lg:hidden items-center gap-2 text-left shrink-0">
-            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand to-amber-500 flex items-center justify-center text-white shadow-md shadow-brand/25">
-              <i class="fa-solid fa-dumbbell text-sm"></i>
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <!-- Mobile Compact Brand Logo (Full GYMQUEST never clipped) -->
+          <button onclick="switchMainMode('landing')" class="flex lg:hidden items-center gap-1.5 text-left shrink-0">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-gradient-to-br from-brand to-amber-500 flex items-center justify-center text-white shadow-md shadow-brand/25 shrink-0">
+              <i class="fa-solid fa-dumbbell text-xs sm:text-sm"></i>
             </div>
-            <div class="flex items-center gap-1.5">
-              <span class="font-display font-bold text-base leading-none whitespace-nowrap">GYM<span class="text-brand">QUEST</span></span>
-              <span id="mobileCloudDot" class="w-2 h-2 rounded-full bg-slate-500" title="Trạng thái đồng bộ Cloud"></span>
+            <div class="flex items-center gap-1">
+              <span class="font-display font-bold text-[15px] sm:text-base tracking-normal leading-none whitespace-nowrap">GYM<span class="text-brand">QUEST</span></span>
+              <span id="mobileCloudDot" class="w-2 h-2 rounded-full bg-slate-500 shrink-0" title="Trạng thái đồng bộ Cloud"></span>
             </div>
           </button>
 
@@ -921,29 +921,30 @@
           </div>
         </div>
 
-        <!-- Right Side: Compact Controls (Single Row, Zero Wrap on Mobile) -->
-        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-          <!-- Mobile Plan Crown Button -->
-          <button onclick="openPricingModal()" class="flex lg:hidden w-8 h-8 rounded-lg gq-elevated hover:border-amber-400 items-center justify-center text-amber-400 shrink-0" title="Gói Đăng Ký (3 Tiers)">
-            <i class="fa-solid fa-crown text-xs"></i>
+        <!-- Right Side: Compact Controls (Single Row, Zero Wrap on Mobile, Includes AI Coach) -->
+        <div class="flex items-center gap-1 sm:gap-2.5 shrink-0">
+          <!-- Mobile AI Coach Trigger (Replaces floating bubble so it never covers buttons!) -->
+          <button onclick="toggleAICoachDrawer()" class="flex lg:hidden px-2 py-1.5 rounded-lg bg-brand/15 border border-brand/40 text-brand font-bold text-[11px] items-center gap-1 whitespace-nowrap shrink-0" title="Chat với AI Coach">
+            <span id="mobileHeaderCoachEmoji">😎</span>
+            <span>AI</span>
           </button>
 
           <!-- Language Switcher VI | EN -->
-          <button onclick="toggleLanguage()" class="px-2 sm:px-3 py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center gap-1.5 text-xs font-bold whitespace-nowrap shrink-0" title="Chuyển đổi Tiếng Việt / Tiếng Anh">
-            <i class="fa-solid fa-language text-brand text-xs sm:text-sm"></i>
+          <button onclick="toggleLanguage()" class="px-1.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center gap-1 text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0" title="Chuyển đổi Tiếng Việt / Tiếng Anh">
+            <i class="fa-solid fa-language text-brand text-xs hidden sm:inline"></i>
             <span id="langBadgeMobile" class="sm:hidden">VI</span>
             <span id="langBadgeApp" class="hidden sm:inline">VI | Tiếng Việt</span>
           </button>
 
           <!-- Theme Switcher Dark | Light -->
-          <button onclick="toggleTheme()" class="w-8 h-8 sm:w-auto sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center justify-center gap-1.5 text-xs font-bold shrink-0" title="Đổi giao diện Sáng / Tối">
+          <button onclick="toggleTheme()" class="w-7 h-7 sm:w-auto sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl gq-elevated hover:border-brand transition flex items-center justify-center gap-1.5 text-xs font-bold shrink-0" title="Đổi giao diện Sáng / Tối">
             <i id="themeIconApp" class="fa-solid fa-sun text-amber-400 text-xs sm:text-sm"></i>
             <span id="themeTextApp" class="hidden md:inline whitespace-nowrap">Dark Mode</span>
           </button>
 
           <!-- Quick Check-in CTA (No Wrap on Mobile!) -->
-          <button id="topCheckInBtn" onclick="triggerDailyCheckIn()" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-[11px] sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
-            <i class="fa-solid fa-circle-check"></i>
+          <button id="topCheckInBtn" onclick="triggerDailyCheckIn()" class="px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-[11px] sm:text-sm shadow-lg shadow-brand/25 transition flex items-center gap-1 whitespace-nowrap shrink-0">
+            <i class="fa-solid fa-circle-check text-[10px] sm:text-xs"></i>
             <span id="topCheckInText" data-i18n="btn_checkin">ĐIỂM DANH</span>
           </button>
         </div>
@@ -1355,19 +1356,19 @@
           </button>
         </div>
 
-        <!-- Top Counters -->
-        <div class="grid grid-cols-3 gap-4">
-          <div class="gq-card rounded-2xl p-5">
-            <div class="text-xs font-bold text-brand uppercase mb-1">⚡ ĐANG THAM GIA</div>
-            <div id="activeChallengesCount" class="font-display font-bold text-3xl">3</div>
+        <!-- Top Counters (Compact Mobile-First 3-Column Grid) -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4">
+          <div class="gq-card rounded-2xl p-3 sm:p-5">
+            <div class="text-[10px] sm:text-xs font-bold text-brand uppercase mb-1 leading-tight">⚡ ĐANG THAM GIA</div>
+            <div id="activeChallengesCount" class="font-display font-bold text-2xl sm:text-3xl">3</div>
           </div>
-          <div class="gq-card rounded-2xl p-5">
-            <div class="text-xs font-bold text-emerald-400 uppercase mb-1">✓ ĐÃ HOÀN THÀNH</div>
-            <div class="font-display font-bold text-3xl">12</div>
+          <div class="gq-card rounded-2xl p-3 sm:p-5">
+            <div class="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase mb-1 leading-tight">✓ HOÀN THÀNH</div>
+            <div id="completedChallengesCount" class="font-display font-bold text-2xl sm:text-3xl">1</div>
           </div>
-          <div class="gq-card rounded-2xl p-5">
-            <div class="text-xs font-bold text-amber-400 uppercase mb-1">🏅 HUY HIỆU ĐẠT ĐƯỢC</div>
-            <div class="font-display font-bold text-3xl">6</div>
+          <div class="gq-card rounded-2xl p-3 sm:p-5">
+            <div class="text-[10px] sm:text-xs font-bold text-amber-400 uppercase mb-1 leading-tight">🏅 HUY HIỆU</div>
+            <div id="challengesBadgesCount" class="font-display font-bold text-2xl sm:text-3xl">3</div>
           </div>
         </div>
 
@@ -1572,7 +1573,7 @@
               <i class="fa-regular fa-star text-brand"></i>
               <span data-i18n="prof_your_coach_title">HUẤN LUYỆN VIÊN AI CỦA BẠN</span>
             </div>
-            <button onclick="openCoachModal()" class="text-xs font-bold text-brand hover:underline" data-i18n="prof_switch_coach">Đổi Coach</button>
+            <button onclick="openCoachModal()" class="text-xs font-bold text-brand hover:underline whitespace-nowrap shrink-0" data-i18n="prof_switch_coach">Đổi Coach</button>
           </div>
 
           <div class="p-4 rounded-2xl gq-elevated flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1738,7 +1739,7 @@
   <!-- 3. FLOATING AI COACH DRAWER & COMPACT MOBILE LAUNCHER BUTTON          -->
   <!-- ===================================================================== -->
   <!-- Floating Bottom-Right AI Coach Button (Compact Circle Above Bottom Bar on Mobile, Full Pill on Desktop) -->
-  <button id="floatingCoachBtn" onclick="toggleAICoachDrawer()" class="fixed bottom-[76px] right-3.5 lg:bottom-6 lg:right-6 z-40 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-3 rounded-full sm:rounded-2xl bg-gradient-to-r from-brand to-amber-500 text-white shadow-xl shadow-brand/40 hover:scale-105 active:scale-95 transition flex items-center justify-center sm:gap-3 border border-white/25" title="Chat với AI Coach">
+  <button id="floatingCoachBtn" onclick="toggleAICoachDrawer()" class="hidden lg:flex fixed bottom-6 right-6 z-40 px-4 py-3 rounded-2xl bg-gradient-to-r from-brand to-amber-500 text-white shadow-xl shadow-brand/40 hover:scale-105 active:scale-95 transition items-center gap-3 border border-white/25" title="Chat với AI Coach">
     <span id="fabCoachEmoji" class="text-xl sm:text-2xl leading-none">😎</span>
     <div class="text-left hidden sm:block">
       <div class="text-[10px] font-extrabold uppercase tracking-wider leading-none opacity-90">AI COACH ONLINE</div>
@@ -3996,11 +3997,11 @@
     }
 
     function getRankMetaByLevel(lvl) {
-      if (lvl <= 1) return { title: 'ROOKIE WARRIOR', short: 'Rookie', nextTitle: 'Contender (Cấp 2)', rankNum: '#12' };
-      if (lvl === 2) return { title: 'CONTENDER', short: 'Contender', nextTitle: 'Athlete (Cấp 3)', rankNum: '#10' };
+      if (lvl <= 1) return { title: 'ROOKIE WARRIOR', short: 'Rookie', nextTitle: 'Contender', rankNum: '#12' };
+      if (lvl === 2) return { title: 'CONTENDER', short: 'Contender', nextTitle: 'Athlete', rankNum: '#10' };
       if (lvl <= 4) return { title: 'ATHLETE WARRIOR', short: 'Athlete', nextTitle: 'Gym Warrior', rankNum: '#8' };
-      if (lvl <= 6) return { title: 'GYM WARRIOR', short: 'Warrior', nextTitle: 'Spartan (Cấp 7)', rankNum: '#6' };
-      if (lvl === 7) return { title: 'SPARTAN WARRIOR', short: 'Spartan', nextTitle: 'Beast (Cấp 8)', rankNum: '#4' };
+      if (lvl <= 6) return { title: 'GYM WARRIOR', short: 'Warrior', nextTitle: 'Spartan', rankNum: '#6' };
+      if (lvl === 7) return { title: 'SPARTAN WARRIOR', short: 'Spartan', nextTitle: 'Beast', rankNum: '#4' };
       return { title: 'BEAST TITAN', short: 'Beast', nextTitle: 'Legend', rankNum: '#3' };
     }
 
@@ -4043,6 +4044,9 @@
       setTxt('xpProgressLabelText', state.lang === 'vi'
         ? `Tiến độ lên Cấp ${state.level + 1} (${rankMeta.nextTitle})`
         : `Progress to Level ${state.level + 1} (${rankMeta.nextTitle})`);
+      setTxt('nextRankUnlockText', state.lang === 'vi'
+        ? `để mở khóa danh hiệu ${rankMeta.nextTitle.toUpperCase()}`
+        : `to unlock ${rankMeta.nextTitle.toUpperCase()} rank`);
 
       const pct = Math.min(100, Math.round((state.xp / Math.max(1, state.nextLevelXp)) * 100));
       const mainBar = document.getElementById('mainXpBar');
@@ -5500,6 +5504,8 @@
       const countStr = `${unlockedList.length}/12`;
       const profStatEl = document.getElementById('profAchievementsVal');
       if (profStatEl) profStatEl.textContent = countStr;
+      const chalBadgeEl = document.getElementById('challengesBadgesCount');
+      if (chalBadgeEl) chalBadgeEl.textContent = unlockedList.length;
 
       const headerBadgeEl = document.getElementById('achievementsUnlockedBadge');
       if (headerBadgeEl) {
@@ -5621,6 +5627,8 @@
       document.getElementById('topBarCoachEmoji').textContent = c.emoji;
       document.getElementById('topBarCoachName').textContent = c.name;
       document.getElementById('fabCoachEmoji').textContent = c.emoji;
+      const mobCoachEl = document.getElementById('mobileHeaderCoachEmoji');
+      if (mobCoachEl) mobCoachEl.textContent = c.emoji;
       document.getElementById('fabCoachTitle').textContent = (state.lang === 'vi' ? 'Chat với ' : 'Chat with ') + c.name;
       document.getElementById('drawerCoachAvatar').textContent = c.emoji;
       document.getElementById('drawerCoachName').textContent = c.name;
@@ -6290,7 +6298,7 @@
     function showToast(msg) {
       const container = document.getElementById('toastContainer');
       const toast = document.createElement('div');
-      toast.className = 'px-4 py-2.5 rounded-xl bg-obsidian-800 text-white border border-brand/50 shadow-xl text-xs sm:text-sm font-bold flex items-center gap-2 animate-bounce';
+      toast.className = 'px-4 py-2 rounded-xl bg-obsidian-900/95 backdrop-blur-md text-white border border-brand/50 shadow-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300';
       toast.innerHTML = msg;
       container.appendChild(toast);
       setTimeout(() => {
